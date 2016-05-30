@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>br.jus.trt18.eventosej.Application</start-class>
+		<start-class>br.com.agricopias.Application</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -28,6 +28,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+        		<exclusion>
+            		<groupId>org.springframework.boot</groupId>
+            		<artifactId>spring-boot-starter-tomcat</artifactId>
+        		</exclusion>
+    		</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -55,7 +61,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<fork>true</fork>										
+<!-- 					<fork>true</fork> -->
+					<jvmArguments>
+            			-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+          			</jvmArguments>										
 				</configuration>
 			</plugin>
 		</plugins>

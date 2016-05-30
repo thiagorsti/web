@@ -1,0 +1,48 @@
+<div ng-controller="TipoServicoController as ctrl" ng-init="ctrl.list()">		
+	<div id="top" class="row">
+		<div class="col-sm-3">
+			<h2>Tipos de Serviço</h2>
+		</div>
+		<div class="col-sm-6">
+			
+			<div class="input-group h2">
+				<input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar" autofocus="autofocus">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+			</div>
+			
+		</div>
+		<div class="col-sm-2">
+			<a href="add.html" class="btn btn-primary pull-right h2">Novo</a>
+		</div>
+	</div>
+	
+	<hr />
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped table-hover" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th>ID</th>					
+						<th>Descrição</th>
+						<th class="actions">Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="ts in ctrl.tiposServico">
+						<td>{{ts.id}}</td>
+						<td>{{ts.descricao}}</td>
+						<td class="actions">
+							<a class="btn btn-success btn-xs" ui-sref="tipoServicoView({id: ts.id})">Visualizar</a>
+							<a class="btn btn-warning btn-xs" ui-sref=".view">Editar</a>
+							<a class="btn btn-danger btn-xs" ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.excluir(ts.id)">Excluir</a>
+						</td>
+					</tr>			
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
