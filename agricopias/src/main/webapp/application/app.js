@@ -26,9 +26,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         template: 'I could sure use a drink right now.'
     })
     
-    
-    
-    
     .state('tipoServico', {
     	url: '/servico/tipo',
     	templateUrl: '../servico/tipo/list.html'
@@ -37,5 +34,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('tipoServicoView', {
     	url: '/servico/tipo/view/:id',
     	templateUrl: '../servico/tipo/view.html'    	
+    })
+	
+	.state('tipoServicoEdit', {
+    	url: '/servico/tipo/edit/:id',
+    	templateUrl: '../servico/tipo/edit.html'    	
+    })
+    
+    .state('tipoServicoAdd', {
+    	url: '/servico/tipo/add',
+    	templateUrl: '../servico/tipo/add.html'    	
     });
 });

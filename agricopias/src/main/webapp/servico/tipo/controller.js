@@ -1,26 +1,32 @@
-app.factory('TipoServico', ['$resource', function($resource){
-	return $resource('/servico/tipos/:id');
-}]);
-
-app.controller('TipoServicoController', ['$scope', '$stateParams', '$uibModal', 'TipoServico', function($scope, $stateParams, $uibModal, TipoServico){
+app.controller('TipoServicoController', ['$scope', '$state', '$stateParams', '$uibModal', 'TipoServico', function($scope, $state, $stateParams, $uibModal, TipoServico){
 	var self = this;
+	
+	function _goTolist() {
+		$state.go('tipoServico', {}, {reload: true});
+	};
 	
 	self.list = function() {
 		self.tiposServico = TipoServico.query();
 	};
 	
 	self.find = function() {
-		//self.tipoServico = TipoServico.get({ id: $stateParams.id })
+		self.tipoServico = TipoServico.get({ id: $stateParams.id });		
+	};
+	
+	self.remove = function(tipoServico) {
+		TipoServico.remove(tipoServico);		
+		_goTolist();
+	};
+	
+	self.save = function(tipoServico) {		
+		if (tipoServico.id) {
+			console.log(tipoServico);			
+			TipoServico.update(tipoServico);			
+		}
+		_goTolist();
+	};
+	
+	self.newTipoServico = function() {
 		self.tipoServico = {};
-	};
-	
-	self.excluir = function(param) {
-		alert(param);
-	};
-	
-	console.log($stateParams.id);
-	
-	self.teste = function() {
-		console.log('teste');
 	};
 }]);

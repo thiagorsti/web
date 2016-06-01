@@ -6,7 +6,7 @@
 		<div class="col-sm-6">
 			
 			<div class="input-group h2">
-				<input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar" autofocus="autofocus">
+				<input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar">
 				<span class="input-group-btn">
 					<button class="btn btn-primary" type="button">
 						<span class="glyphicon glyphicon-search"></span>
@@ -16,7 +16,7 @@
 			
 		</div>
 		<div class="col-sm-2">
-			<a href="add.html" class="btn btn-primary pull-right h2">Novo</a>
+			<a ui-sref="tipoServicoAdd" class="btn btn-primary pull-right h2">Novo</a>
 		</div>
 	</div>
 	
@@ -37,8 +37,8 @@
 						<td>{{ts.descricao}}</td>
 						<td class="actions">
 							<a class="btn btn-success btn-xs" ui-sref="tipoServicoView({id: ts.id})">Visualizar</a>
-							<a class="btn btn-warning btn-xs" ui-sref=".view">Editar</a>
-							<a class="btn btn-danger btn-xs" ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.excluir(ts.id)">Excluir</a>
+							<a class="btn btn-warning btn-xs" ui-sref="tipoServicoEdit({id: ts.id})">Editar</a>
+							<a class="btn btn-danger btn-xs" ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.remove(ts)">Excluir</a>
 						</td>
 					</tr>			
 				</tbody>
