@@ -14,8 +14,10 @@ app.controller('TipoServicoController', ['$scope', '$state', '$stateParams', '$u
 	};
 	
 	self.remove = function(tipoServico) {
-		TipoServico.remove(tipoServico);		
-		_goTolist();
+		TipoServico.remove(tipoServico, function(){
+			console.log('delete executado');
+			_goTolist();
+		});
 	};
 	
 	self.save = function(tipoServico) {		

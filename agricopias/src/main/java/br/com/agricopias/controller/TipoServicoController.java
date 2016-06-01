@@ -51,5 +51,6 @@ public class TipoServicoController {
 	public @ResponseBody void delete(@PathVariable Long id) {
 		TipoServico tipoServico = findById(id);
 		tiposServico.remove(tipoServico);
+		System.out.println("Teste");
 	}	
 }
