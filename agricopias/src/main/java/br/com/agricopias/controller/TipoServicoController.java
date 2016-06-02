@@ -1,6 +1,7 @@
 package br.com.agricopias.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,5 +54,15 @@ public class TipoServicoController {
 		TipoServico tipoServico = findById(id);
 		tiposServico.remove(tipoServico);
 		System.out.println("Teste");
-	}	
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public @ResponseBody TipoServico update(@PathVariable Long id, @RequestBody TipoServico tipoServico) {
+		TipoServico old = findById(id);
+		if (old == null) {
+			return null;
+		}
+		Collections.replaceAll(tiposServico, old, tipoServico);
+		return tipoServico;
+	}
 }
