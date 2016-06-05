@@ -1,7 +1,9 @@
 app.controller('TipoServicoController', ['$scope', '$state', '$stateParams', '$uibModal', 'TipoServico', function($scope, $state, $stateParams, $uibModal, TipoServico){
 	var self = this;
 	
-	function _goTolist() {
+	self.criteria = '';
+	
+	var _goToList = function() {
 		$state.go('tipoServico', {}, {reload: true});
 	};
 	
@@ -14,18 +16,24 @@ app.controller('TipoServicoController', ['$scope', '$state', '$stateParams', '$u
 	};
 	
 	self.remove = function(tipoServico) {
-		TipoServico.remove(tipoServico, function(){			
-			_goTolist();
-		});
+		TipoServico.remove(tipoServico, _goToList);
 	};
 	
-	self.save = function(tipoServico) {		
+	self.save = function() {
+		$scope.$broadcast('show-errors-check-validity');
+		var form = self.form;
+		if (form.$invalid) {			
+			console.log('Form inválido');
+			return;
+		}
+		var tipoServico = self.tipoServico;
 		if (tipoServico.id) {
-			console.log(tipoServico);			
-			TipoServico.update(tipoServico, function() {
-				_goTolist();
-			});			
-		}		
+			console.log(tipoServico);
+			TipoServico.update(tipoServico, _goToList);			
+		}
+		else {
+			TipoServico.save(tipoServico, _goToList);
+		}
 	};
 	
 	self.newTipoServico = function() {

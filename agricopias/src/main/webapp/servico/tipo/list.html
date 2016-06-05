@@ -6,14 +6,19 @@
 		<div class="col-sm-6">
 			
 			<div class="input-group h2">
-				<input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar">
-				<span class="input-group-btn">
-					<button class="btn btn-primary" type="button">
-						<span class="glyphicon glyphicon-search"></span>
-					</button>
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-search"></span>
 				</span>
-			</div>
-			
+				<input ng-model="ctrl.criteria" 
+					class="form-control" 
+					id="search" 
+					type="text" 
+					placeholder="Pesquisar"
+					popover-trigger="focus"					
+					uib-popover="Digite o id ou descrição do Tipo de Serviço para pesquisar"					 
+					autocomplete="off"
+					auto-focus>
+			</div>			
 		</div>
 		<div class="col-sm-2">
 			<a ui-sref="tipoServicoAdd" class="btn btn-primary pull-right h2">Novo</a>
@@ -26,13 +31,13 @@
 			<table class="table table-striped table-hover" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
-						<th>ID</th>					
+						<th>ID</th>
 						<th>Descrição</th>
 						<th class="actions">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="ts in ctrl.tiposServico">
+					<tr ng-repeat="ts in ctrl.tiposServico | filter: ctrl.criteria">
 						<td>{{ts.id}}</td>
 						<td>{{ts.descricao}}</td>
 						<td class="actions">
@@ -40,7 +45,7 @@
 							<a class="btn btn-warning btn-xs" ui-sref="tipoServicoEdit({id: ts.id})">Editar</a>
 							<a class="btn btn-danger btn-xs" ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.remove(ts)">Excluir</a>
 						</td>
-					</tr>			
+					</tr>
 				</tbody>
 			</table>
 		</div>

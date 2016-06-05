@@ -52,8 +52,7 @@ public class TipoServicoController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {
 		TipoServico tipoServico = findById(id);
-		tiposServico.remove(tipoServico);
-		System.out.println("Teste");
+		tiposServico.remove(tipoServico);		
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -63,6 +62,14 @@ public class TipoServicoController {
 			return null;
 		}
 		Collections.replaceAll(tiposServico, old, tipoServico);
+		return tipoServico;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody TipoServico add(@RequestBody TipoServico tipoServico) {
+		Long id = tiposServico.stream().mapToLong(ts -> ts.getId()).max().orElseGet(() -> 0L) + 1;
+		tipoServico.setId(id);
+		tiposServico.add(tipoServico);
 		return tipoServico;
 	}
 }

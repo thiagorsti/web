@@ -8,7 +8,7 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
         link: function (scope, element) {
             element.bind('click', function () {
                     var modalInstance = $uibModal.open({
-                    	template: '<div class="modal-header"><h3 class="modal-title">{{confirmMessage}}</h3></div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button><button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button></div>',
+                    	template: '<div class="modal-header"><h3 class="modal-title">{{confirmMessage}}</h3></div><div class="modal-footer"><button class="btn btn-primary" type="button" ng-click="ok()">OK</button><button class="btn btn-warning" type="button" ng-click="cancel()" auto-focus>Cancelar</button></div>',
                         controller: 'ModalConfirmCtrl',
                         size: 'sm',
                         windowClass: 'confirm-window',

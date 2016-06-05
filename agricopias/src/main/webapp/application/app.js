@@ -1,6 +1,10 @@
-var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngResource']);
+var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors', 'ngResource']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', function($uibTooltipProvider, $stateProvider, $urlRouterProvider) {
+	
+	$uibTooltipProvider.options({
+		placement: 'top-left'
+	});
 	
 	//$locationProvider.html5Mode(false).hashPrefix('');	
 	$urlRouterProvider.otherwise('/servico/tipo');
@@ -45,4 +49,4 @@ app.config(function($stateProvider, $urlRouterProvider) {
     	url: '/servico/tipo/add',
     	templateUrl: '../servico/tipo/add.html'    	
     });
-});
+}]);
