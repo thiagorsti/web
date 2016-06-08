@@ -1,18 +1,18 @@
-<form name="ctrl.form" role="form" ng-submit="ctrl.save(form)" novalidate>
+<form focus-error="true" tooltip-trigger="hover manual" name="ctrl.form" role="form" ng-submit="ctrl.save(form)" novalidate>
 	<div class="row">	
 		<div class="form-group col-md-6" show-errors>	
 			<label for="descricao" class="control-label">Descrição</label>  		
 			<input type="text"
-				name="descricao" 
+				id="frmDesc"
+				name="descricao"
 				ng-model="ctrl.tipoServico.descricao"
-				ng-required="true" 
+				ng-required="true"
+				ng-minlength="7"
 				class="form-control"
 				placeholder="Descrição" 
 				autocomplete="off" 
 				auto-focus />
-			<p class="help-block" ng-show="ctrl.form.descricao.$touched && ctrl.form.descricao.$error.required">
-				Informe a descrição
-			</p>
+			<error-messages field="ctrl.form.descricao"></error-messages>	
 		</div>
 	</div>
 	<hr />

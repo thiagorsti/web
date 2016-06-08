@@ -19,6 +19,10 @@ app.controller('TipoServicoController', ['$scope', '$state', '$stateParams', '$u
 		TipoServico.remove(tipoServico, _goToList);
 	};
 	
+	self.teste = function() {
+		alert('ok');
+	};
+	
 	self.save = function() {
 		$scope.$broadcast('show-errors-check-validity');
 		var form = self.form;
