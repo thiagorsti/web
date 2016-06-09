@@ -1,0 +1,10 @@
+<div ng-controller="ServicoController as ctrl" ng-init="ctrl.edit()">
+	<h3 class="page-header">Editar Serviço</h3>
+	<div class="form-group col-md-1">  	  		
+		<p>
+			<strong>Id</strong>
+		</p>
+		<p>{{ctrl.servico.id}}</p>
+	</div>
+	<div ng-include="'servico/_form.html'"></div>
+</div>

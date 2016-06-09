@@ -10,38 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.agricopias.entity.TipoServico;
-import br.com.agricopias.service.TipoServicoService;
+import br.com.agricopias.entity.Servico;
+import br.com.agricopias.service.ServicoService;
 
 @Controller
-@RequestMapping("/servico/tipos")
-public class TipoServicoController {	
-	
+@RequestMapping("/servicos")
+public class ServicoController {
+
 	@Autowired
-	private TipoServicoService tipoServicoService;	
+	private ServicoService servicoService;	
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<TipoServico> findAll() {
-		return tipoServicoService.findAll();
+	public @ResponseBody List<Servico> findAll() {
+		return servicoService.findAll();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody TipoServico findById(@PathVariable Long id) {
-		return tipoServicoService.findById(id);
+	public @ResponseBody Servico findById(@PathVariable Long id) {
+		return servicoService.findById(id);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody void delete(@PathVariable Long id) {
-		tipoServicoService.delete(id);		
+		servicoService.delete(id);		
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public @ResponseBody TipoServico update(@PathVariable Long id, @RequestBody TipoServico tipoServico) {
-		return tipoServicoService.update(id, tipoServico);
+	public @ResponseBody Servico update(@PathVariable Long id, @RequestBody Servico servico) {
+		return servicoService.update(id, servico);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody TipoServico add(@RequestBody TipoServico tipoServico) {
-		return tipoServicoService.add(tipoServico);
+	public @ResponseBody Servico add(@RequestBody Servico servico) {
+		return servicoService.add(servico);
 	}
 }

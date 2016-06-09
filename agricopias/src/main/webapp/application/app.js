@@ -7,10 +7,10 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
 		placement: 'top-left'
 	});
 	
-	//$locationProvider.html5Mode(false).hashPrefix('');	
-	$urlRouterProvider.otherwise('/servico/tipo');
+//	$locationProvider.html5Mode(false).hashPrefix('');	
+	$urlRouterProvider.otherwise('/servico');
 	
-	$stateProvider    
+	$stateProvider
     // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
         url: '/home',
@@ -49,5 +49,25 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
     .state('tipoServicoAdd', {
     	url: '/servico/tipo/add',
     	templateUrl: '../servico/tipo/add.html'    	
-    });
+    })
+	
+	.state('servico', {
+		url: '/servico',
+		templateUrl: '../servico/list.html'
+	})
+	
+	.state('servicoView', {
+		url: '/servico/view/:id',
+		templateUrl: '../servico/view.html'
+	})
+	
+	.state('servicoEdit', {
+		url: '/servico/edit/:id',
+    	templateUrl: '../servico/edit.html'
+	})
+	
+	.state('servicoAdd', {
+    	url: '/servico/add',
+    	templateUrl: '../servico/add.html'    	
+    })
 }]);

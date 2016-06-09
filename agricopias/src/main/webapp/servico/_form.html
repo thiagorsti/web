@@ -1,0 +1,47 @@
+<form name="ctrl.form" role="form" ng-submit="ctrl.save(form)" novalidate>
+	<div class="row">	
+		<div class="form-group col-md-6" show-errors>	
+			<label for="descricao" class="control-label">Descrição</label>  		
+			<input type="text"				
+				name="descricao"
+				ng-model="ctrl.servico.descricao"
+				ng-required="true"
+				ng-minlength="7"
+				class="form-control"
+				placeholder="Descrição" 
+				autocomplete="off" 
+				auto-focus />
+			<error-messages field="ctrl.form.descricao"></error-messages>	
+		</div>		
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4" show-errors>
+			<label for="tipoServico" class="control-label">Tipo de Serviço</label>
+			<input type="text" 
+				name="tipoServico" 
+				ng-model="ctrl.servico.tipoServico"
+				ng-required="true" 
+				uib-typeahead="ts as ts.descricao for ts in ctrl.tiposServico | filter:$viewValue | limitTo:10"
+				typeahead-editable="false"
+				typeahead-min-length="0"
+				class="form-control"
+				placeholder="Tipo de Serviço"
+				autocomplete="off">
+			<error-messages field="ctrl.form.tipoServico"></error-messages>
+		</div>
+		<div class="form-group col-md-2" show-erros>
+			<label for="possuiAreaChapada" class="control-label">Possui área chapada?</label>
+			
+		</div>
+	</div>
+	<hr />
+	<div class="row">
+	  <div class="col-md-12">
+	  	<button type="submit" class="btn btn-primary">Salvar</button>
+		<a ui-sref="servico" class="btn btn-default">Cancelar</a>
+	  </div>
+	</div>
+	<pre>
+		{{ctrl.servico | json}}
+	</pre>
+</form>
