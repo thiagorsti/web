@@ -17,7 +17,7 @@ import br.com.agricopias.service.ServicoService;
 @RequestMapping("/servicos")
 public class ServicoController {
 
-	@Autowired
+	@Autowired	
 	private ServicoService servicoService;	
 	
 	@RequestMapping(method = RequestMethod.GET)

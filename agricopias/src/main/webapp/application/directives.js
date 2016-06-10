@@ -1,3 +1,17 @@
+app.directive('autoFocus', ['$timeout', function($timeout) {
+	return {
+		restrict: 'A',	
+        link: {
+        	post: function postLink(scope, element, attr) {
+        		$timeout(function() {
+        			element[0].focus(); 
+                }, 100);  		
+        	}
+        }
+	}
+}]);
+
+
 app.directive('ngConfirm',['$uibModal', function ($uibModal) {
     return {
         restrict: 'A',
@@ -42,3 +56,26 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
         }
 	}
 ]);
+
+
+app.directive('errorMessages', function() {
+	return {
+		restrict: "E",		
+		scope: {
+			field: "="
+		},
+		templateUrl: "errorMessages.html"
+	};
+});
+
+app.directive('showErrors', function(){
+	return {
+		restrict: 'A',
+		templateUrl: 'errorMessages.html',
+		transclude: true,		
+		link: function postLink(scope, elem, attrs) {
+			scope.msg = "MESSAGE";
+			console.log(attrs);
+		}
+	};
+});
