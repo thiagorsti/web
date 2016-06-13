@@ -31,13 +31,12 @@ app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibMo
 		Servico.remove(servico, _goToList);
 	};
 	
-	self.save = function() {
-		$scope.$broadcast('show-errors-check-validity');
+	self.save = function() {		
 		var form = self.form;
 		if (form.$invalid) {			
 			console.log('Form inválido');
 			return;
-		}
+		}		
 		var servico = self.servico;
 		if (servico.id) {
 			console.log(servico);

@@ -68,22 +68,34 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
 //	};
 //});
 
-app.directive('showValidation', [function() {
+app.directive('showValidation', ['$timeout', function($timeout) {
     return {
         restrict: 'A',
         require:'form',
         link: function(scope, element, attrs, formCtrl) {
+        	angular.forEach(formCtrl, function(value, key) {
+        		console.log('key: ' + key);
+        		console.log('value: ' + value);
+        	});
+        	element.on('submit', function(){
+        		$timeout(function(){
+        			if (formCtrl.$invalid) {
+        				
+                	}
+        		});
+            });
         	element.attr('novalidate', 'novalidate');
-            element.find('.form-group').each(function() {
+            element.find('.form-group').each(function() {            	
                 var $formGroup=$(this);
                 var $inputs = $formGroup.find('input[ng-model],textarea[ng-model],select[ng-model]');                
                 if ($inputs.length > 0) {
-                    $inputs.each(function() {                    	
+                    $inputs.each(function() {
                         var $input=$(this);
-                        var $model=formCtrl[$input.attr('name')];                        
-                        scope.$watch(function() {       	
-                        	return (($model.$invalid && $model.$touched) || formCtrl.$submitted);
-                        }, function(isInvalid) {              	
+                        var $model=formCtrl[$input.attr('name')];
+                        scope.$watch(function() {
+                        	return ($model.$invalid && ($model.$touched || formCtrl.$submitted));
+                        }, function(isInvalid) {
+                        	console.log($input.attr('name'));
                             $formGroup.toggleClass('has-error', isInvalid);
                         });
                     });
