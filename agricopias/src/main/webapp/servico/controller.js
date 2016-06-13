@@ -3,6 +3,18 @@ app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.criteria = '';
 	
+	var cont = 0;
+	
+	$scope.$watch(
+		function (scope) {
+			return (self.criteria);
+		},
+		function(newValue, oldValue) {
+			if (newValue === oldValue) return;
+			console.log('newValue: ' + newValue);
+		}
+	);
+	
 	var _goToList = function() {
 		$state.go('servico', {}, {reload: true});
 	};

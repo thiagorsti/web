@@ -58,24 +58,37 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
 ]);
 
 
-app.directive('errorMessages', function() {
-	return {
-		restrict: "E",		
-		scope: {
-			field: "="
-		},
-		templateUrl: "errorMessages.html"
-	};
-});
+//app.directive('errorMessages', function() {
+//	return {
+//		restrict: "E",		
+//		scope: {
+//			field: "="
+//		},
+//		templateUrl: "errorMessages.html"
+//	};
+//});
 
-app.directive('showErrors', function(){
-	return {
-		restrict: 'A',
-		templateUrl: 'errorMessages.html',
-		transclude: true,		
-		link: function postLink(scope, elem, attrs) {
-			scope.msg = "MESSAGE";
-			console.log(attrs);
-		}
-	};
-});
+app.directive('showValidation', [function() {
+    return {
+        restrict: 'A',
+        require:'form',
+        link: function(scope, element, attrs, formCtrl) {
+        	element.attr('novalidate', 'novalidate');
+            element.find('.form-group').each(function() {
+                var $formGroup=$(this);
+                var $inputs = $formGroup.find('input[ng-model],textarea[ng-model],select[ng-model]');                
+                if ($inputs.length > 0) {
+                    $inputs.each(function() {                    	
+                        var $input=$(this);
+                        var $model=formCtrl[$input.attr('name')];                        
+                        scope.$watch(function() {       	
+                        	return (($model.$invalid && $model.$touched) || formCtrl.$submitted);
+                        }, function(isInvalid) {              	
+                            $formGroup.toggleClass('has-error', isInvalid);
+                        });
+                    });
+                }
+            });
+        }
+    };
+}]);

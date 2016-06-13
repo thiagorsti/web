@@ -1,5 +1,5 @@
 //var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors', 'ngResource']);
-var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngMessages', 'ngResource', 'ngSanitize']);
+var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'angular.bootstrap.validator', 'ngMessages', 'ngResource', 'ngSanitize']);
 
 app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', function($uibTooltipProvider, $stateProvider, $urlRouterProvider) {
 	
