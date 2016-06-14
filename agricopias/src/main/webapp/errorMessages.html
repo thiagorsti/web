@@ -1,12 +1,10 @@
-<!-- <script type="text/ng-template" id="error-messages"> -->
-<!-- 	<p ng-message="required">Campo obrigatório</p> -->
-<!-- 	<p ng-message="minlength">Valor informado muito curto</p> -->
-<!-- 	<p ng-message="maxlength">Valor informado muito longo</p> -->
-<!-- 	<p ng-message="email">E-mail inválido</p> -->
-<!-- </script> -->
+<script type="text/ng-template" id="error-messages">
+	<p ng-message="required">Campo obrigatório</p>
+	<p ng-message="minlength">Valor informado muito curto</p>
+	<p ng-message="maxlength">Valor informado muito longo</p>
+	<p ng-message="email">E-mail inválido</p>
+</script>
 
-<!-- <div ng-messages="field.$error" role="alert" class="help-block has-error"> -->
-<!-- 	<div ng-messages-include="error-messages"></div> -->
-<!-- </div> -->
-<div ng-transclude></div>
-{{msg}}
+<div ng-messages="field.$error" role="alert" class="help-block has-error">
+	<div ng-messages-include="error-messages"></div>
+</div>
