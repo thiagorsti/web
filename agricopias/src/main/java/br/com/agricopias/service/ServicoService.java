@@ -22,8 +22,7 @@ private static final List<Servico> servicos = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
-		servicos.add(new Servico(1L, "Serviço 1", tipoServicoService.findById(1L), false));
-		servicos.add(new Servico(2L, "Serviço 2", tipoServicoService.findById(2L), true));
+		
 	}	
 	
 	public List<Servico> findAll() {

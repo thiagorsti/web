@@ -4,7 +4,6 @@
 	<p ng-message="maxlength">Valor informado muito longo</p>
 	<p ng-message="email">E-mail inválido</p>
 </script>
-
-<div ng-messages="field.$error" role="alert" class="help-block has-error">
+<div ng-messages="field.$error" role="alert" class="help-block has-error" ng-show="field.$invalid && (field.$touched || form.$submitted)" >
 	<div ng-messages-include="error-messages"></div>
 </div>
