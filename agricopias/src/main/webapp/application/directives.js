@@ -60,14 +60,15 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
 
 app.directive('errorMessages', function() {
 	return {
-		restrict: "E",
-		require: "form",
-		scope: {
-			field: "="
+		restrict: "E",		
+		scope: {			
+//			form: "=",
+			field: '='
 		},
 		templateUrl: "errorMessages.html"
 	};
 });
+
 
 app.directive('showValidation', ['$timeout', '$compile', function($timeout, $compile) {
     return {
@@ -85,15 +86,20 @@ app.directive('showValidation', ['$timeout', '$compile', function($timeout, $com
         		});
             });
             element.find('.form-group').each(function() {
-                var $formGroup=$(this);                
+                var $formGroup=$(this);
                 var $inputs = $formGroup.find(inputPattern);
                 if ($inputs.length > 0) {
+                	var $formName = formCtrl.$name;
                     $inputs.each(function() {                    	
                         var $input=$(this);
                         var $model=formCtrl[$input.attr('name')];
-                        var $messages = angular.element('<error-messages field="' + formCtrl.$name + '.' + $input.attr('name') + '"></error-messages>');
-                        $compile($messages)(scope);
-                        $formGroup.append($messages);
+                        var $elems = $formGroup.find('error-messages');                        
+                        if ($elems.size() == 0) {                        	
+                        	var $field = $formName + '.' + $model.$name
+                        	var $messages = '<error-messages field="' + $field + '"></error-messages>';
+                        	var el = $compile($messages)(scope);
+                        	$formGroup.append(el);          	
+                        }
                         scope.$watch(function() {
                         	return ($model.$invalid && ($model.$touched || formCtrl.$submitted));
                         }, function(isInvalid) {
