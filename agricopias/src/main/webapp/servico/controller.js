@@ -31,7 +31,8 @@ app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibMo
 		Servico.remove(servico, _goToList);
 	};
 	
-	self.save = function() {		
+	self.save = function() {
+		console.log('Save');
 		var form = self.form;
 		if (form.$invalid) {			
 			console.log('Form inválido');

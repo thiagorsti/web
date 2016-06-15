@@ -62,13 +62,11 @@ app.directive('errorMessages', function() {
 	return {
 		restrict: "E",		
 		scope: {			
-//			form: "=",
 			field: '='
 		},
 		templateUrl: "errorMessages.html"
 	};
 });
-
 
 app.directive('showValidation', ['$timeout', '$compile', function($timeout, $compile) {
     return {
@@ -77,15 +75,13 @@ app.directive('showValidation', ['$timeout', '$compile', function($timeout, $com
         link: function(scope, element, attrs, formCtrl) {
         	element.attr('novalidate', 'novalidate');
         	var inputPattern = 'input[ng-model],textarea[ng-model],select[ng-model]';
-        	element.on('submit', function() {
-        		$timeout(function() {
-        			if (formCtrl.$invalid) {
-        				var $input = element.find('.form-group ' + inputPattern).filter('.ng-invalid').filter(':visible').first();
-        				$input.focus();
-        			}
-        		});
+        	element.on('submit', function() {        		
+    			if (formCtrl.$invalid) {
+    				var $input = element.find('.form-group ' + inputPattern).filter('.ng-invalid').filter(':visible').first();
+    				$input.focus();
+    			}
             });
-            element.find('.form-group').each(function() {
+            /*element.find('.form-group').each(function() {
                 var $formGroup=$(this);
                 var $inputs = $formGroup.find(inputPattern);
                 if ($inputs.length > 0) {
@@ -103,12 +99,11 @@ app.directive('showValidation', ['$timeout', '$compile', function($timeout, $com
                         scope.$watch(function() {
                         	return ($model.$invalid && ($model.$touched || formCtrl.$submitted));
                         }, function(isInvalid) {
-                        	console.log($input.attr('name'));
                             $formGroup.toggleClass('has-error', isInvalid);
                         });
                     });
                 }
-            });
+            });*/
         }
     };
 }]);
