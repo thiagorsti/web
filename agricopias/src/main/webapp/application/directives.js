@@ -60,13 +60,15 @@ app.directive('ngConfirm',['$uibModal', function ($uibModal) {
 
 app.directive('errorMessages', function() {
 	return {
-		restrict: "E",
-		scope: {
-			field: "="
+		restrict: "E",		
+		scope: {			
+//			form: "=",
+			field: '='
 		},
 		templateUrl: "errorMessages.html"
 	};
 });
+
 
 app.directive('showValidation', ['$timeout', '$compile', function($timeout, $compile) {
     return {
