@@ -1,9 +1,14 @@
 package br.com.agricopias.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Unidade {
 	
-	METRO_LINEAR("metro linear", "m"), 
-	METRO_QUADRADO("metro quadrado", "m²"), 
+	METRO_LINEAR("metro linear", "m"),
+	METRO_QUADRADO("metro quadrado", "m²"),
 	UNITARIO("unitário", "u");
 
 	private Unidade(String descricao, String sigla) {
@@ -12,9 +17,9 @@ public enum Unidade {
 	}
 
 	private final String descricao;
-
-	private final String sigla;
-
+	
+	private final String sigla;	
+	
 	public String getSigla() {
 		return sigla;
 	}
@@ -25,5 +30,9 @@ public enum Unidade {
 
 	public String getDescricaoCompleta() {
 		return getSigla() + " - " + getDescricao();
+	}
+	
+	public String toString() {
+		return sigla;
 	}
 }

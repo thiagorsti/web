@@ -1,19 +1,12 @@
-app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibModal', 'Servico', 'TipoServico', function($scope, $state, $stateParams, $uibModal, Servico, TipoServico){
+app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibModal', 'Servico', 'TipoServico', 'EnumService', function($scope, $state, $stateParams, $uibModal, Servico, TipoServico, EnumService){
 	var self = this;
 	
 	self.criteria = '';
 	
-	var cont = 0;
-	
-	$scope.$watch(
-		function (scope) {
-			return (self.criteria);
-		},
-		function(newValue, oldValue) {
-			if (newValue === oldValue) return;
-			console.log('newValue: ' + newValue);
-		}
-	);
+	var _loadData = function() {
+		self.tiposServico = TipoServico.query();
+		self.unidades = EnumService.query({enum: 'unidade'});
+	};
 	
 	var _goToList = function() {
 		$state.go('servico', {}, {reload: true});
@@ -50,11 +43,11 @@ app.controller('ServicoController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.newServico = function() {
 		self.servico = {};
-		self.tiposServico = TipoServico.query();
+		_loadData();
 	};
 	
 	self.edit = function() {
 		self.find();
-		self.tiposServico = TipoServico.query();
+		_loadData();
 	};
 }]);

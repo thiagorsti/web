@@ -29,32 +29,69 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-3">
+			<label for="unidade" class="control-label">Unidade</label>
+			<select name="unidade"
+				ng-model="ctrl.servico.unidade"
+				ng-required="true"
+				ng-options="u as u.descricao for u in ctrl.unidades"
+				class="form-control">
+			</select>
+		</div>
+		<div class="form-group col-md-5">
 			<label for="tipoServico" class="control-label">Tipo de Serviço</label>
-			<input type="text" 
+			<input type="text"
+				class="form-control" 
 				name="tipoServico" 
 				ng-model="ctrl.servico.tipoServico"
 				ng-required="true" 
 				uib-typeahead="ts as ts.descricao for ts in ctrl.tiposServico | filter:$viewValue | limitTo:10"
-				typeahead-editable="false"		
-				class="form-control"
+				typeahead-editable="false"
 				placeholder="Tipo de Serviço"
-				autocomplete="off">						
-		</div>		
+				autocomplete="off">
+		</div>				
 	</div>
 	<div class="row">
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-2">
+			<label for="valor" class="control-label">Valor</label>
+			<input type="text"
+				class="form-control"
+				name="valor"
+				ng-model="ctrl.servico.valor"
+				ng-required="true"
+				placeholder="Valor"
+				autocomplete="off"
+				ui-number-mask="2" />
+		</div>
+		<div class="form-group col-md-2">
 			<label for="areaChap" class="control-label">Possui área chapada?</label>
 			<div class="input-group">
 				<label class="radio-inline">
-					<input type="radio" name="areaChap" ng-model="ctrl.servico.possuiAreaChapada" ng-value="true" ng-required="true">
+					<input type="radio" name="areaChap" 
+						ng-model="ctrl.servico.possuiAreaChapada" 
+						ng-value="true" 
+						ng-required="true">
 					Sim
 				</label>
 				<label class="radio-inline">
-					<input type="radio" name="areaChap" ng-model="ctrl.servico.possuiAreaChapada" ng-value="false" ng-required="true">
+					<input type="radio" name="areaChap" 
+						ng-model="ctrl.servico.possuiAreaChapada" 
+						ng-value="false" 
+						ng-required="true">
 					Não
 				</label>
 			</div>			
+		</div>
+		<div class="form-group col-md-2" ng-if="ctrl.servico.possuiAreaChapada">
+			<label for="valorAreaChap" class="control-label">Valor da área</label>
+			<input type="text"
+				class="form-control"
+				name="valorAreaChap"
+				ng-model="ctrl.servico.valorAreaChapada"
+				ng-required="true"
+				placeholder="Valor da área"
+				autocomplete="off"
+				ui-number-mask="2" />
 		</div>
 	</div>
 	<hr />
@@ -65,3 +102,6 @@
 	  </div>
 	</div>	
 </form>
+<pre>
+	{{ctrl.unidades | json}}
+</pre>

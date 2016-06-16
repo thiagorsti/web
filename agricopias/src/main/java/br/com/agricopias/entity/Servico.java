@@ -13,10 +13,10 @@ public class Servico {
 	private String descricao;
 
 	private TipoServico tipoServico;
+	
+	private BigDecimal valor;
 
 	private Boolean possuiAreaChapada;
-	 
-	private BigDecimal valor;
 	
 	private BigDecimal valorAreaChapada;	 
 	

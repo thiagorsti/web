@@ -21,3 +21,12 @@ app.factory('Servico', ['$resource', function($resource){
 			}
 	);
 }]);
+
+app.factory('EnumService', ['$resource', function($resource){	
+	return $resource('/enums/:enum',
+			{enum : 'enum'}, 
+			{
+				query: {method:'GET', isArray: true}
+			}
+	);
+}]);
