@@ -1,4 +1,4 @@
-<form name="ctrl.form" role="form" ng-submit="ctrl.save()" show-validation>	
+<form name="ctrl.form" role="form" ng-submit="ctrl.save()">	
 	<div class="row">
 		<div class="form-group col-md-1" ng-if="ctrl.tipoServico.id">  	  		
 			<p>
@@ -18,7 +18,6 @@
 				placeholder="Descrição" 
 				autocomplete="off" 
 				auto-focus />
-			<error-messages field="ctrl.form.descricao"></error-messages>	
 		</div>
 	</div>
 	<hr />
