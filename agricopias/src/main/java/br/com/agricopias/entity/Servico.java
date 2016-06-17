@@ -20,19 +20,17 @@ public class Servico {
 	
 	private BigDecimal valorAreaChapada;	 
 	
-	private Unidade unidade;	
+	private Unidade unidade;
 	
 	private Boolean possuiIntervaloDimensoes;	
 	
-	private BigDecimal alturaInicial;	
+	private BigDecimal lado1Inicio;	
 	
-	private BigDecimal alturaFinal;	
+	private BigDecimal lado1Fim;	
 	
-	private BigDecimal larguraInicial;	
+	private BigDecimal lado2Inicio;	
 	
-	private BigDecimal larguraFinal;
-	
-	public Servico(){}
+	private BigDecimal lado2Fim;
 
 	public Long getId() {
 		return id;
@@ -66,20 +64,20 @@ public class Servico {
 		this.tipoServico = tipoServico;
 	}
 
-	public Boolean getPossuiAreaChapada() {
-		return possuiAreaChapada;
-	}
-
-	public void setPossuiAreaChapada(Boolean possuiAreaChapada) {
-		this.possuiAreaChapada = possuiAreaChapada;
-	}
-
 	public BigDecimal getValor() {
 		return valor;
 	}
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Boolean getPossuiAreaChapada() {
+		return possuiAreaChapada;
+	}
+
+	public void setPossuiAreaChapada(Boolean possuiAreaChapada) {
+		this.possuiAreaChapada = possuiAreaChapada;
 	}
 
 	public BigDecimal getValorAreaChapada() {
@@ -106,35 +104,35 @@ public class Servico {
 		this.possuiIntervaloDimensoes = possuiIntervaloDimensoes;
 	}
 
-	public BigDecimal getAlturaInicial() {
-		return alturaInicial;
+	public BigDecimal getLado1Inicio() {
+		return lado1Inicio;
 	}
 
-	public void setAlturaInicial(BigDecimal alturaInicial) {
-		this.alturaInicial = alturaInicial;
+	public void setLado1Inicio(BigDecimal lado1Inicio) {
+		this.lado1Inicio = lado1Inicio;
 	}
 
-	public BigDecimal getAlturaFinal() {
-		return alturaFinal;
+	public BigDecimal getLado1Fim() {
+		return lado1Fim;
 	}
 
-	public void setAlturaFinal(BigDecimal alturaFinal) {
-		this.alturaFinal = alturaFinal;
+	public void setLado1Fim(BigDecimal lado1Fim) {
+		this.lado1Fim = lado1Fim;
 	}
 
-	public BigDecimal getLarguraInicial() {
-		return larguraInicial;
+	public BigDecimal getLado2Inicio() {
+		return lado2Inicio;
 	}
 
-	public void setLarguraInicial(BigDecimal larguraInicial) {
-		this.larguraInicial = larguraInicial;
+	public void setLado2Inicio(BigDecimal lado2Inicio) {
+		this.lado2Inicio = lado2Inicio;
 	}
 
-	public BigDecimal getLarguraFinal() {
-		return larguraFinal;
+	public BigDecimal getLado2Fim() {
+		return lado2Fim;
 	}
 
-	public void setLarguraFinal(BigDecimal larguraFinal) {
-		this.larguraFinal = larguraFinal;
-	}	
+	public void setLado2Fim(BigDecimal lado2Fim) {
+		this.lado2Fim = lado2Fim;
+	}		
 }
