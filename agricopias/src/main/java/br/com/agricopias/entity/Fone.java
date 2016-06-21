@@ -5,7 +5,7 @@ import br.com.agricopias.util.Mascara;
 public class Fone {
 
 	private Long id;
-
+	
 	private String numero;
 
 	public Long getId() {

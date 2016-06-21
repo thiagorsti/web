@@ -1,0 +1,96 @@
+<form name="ctrl.form" role="form" ng-submit="ctrl.save(form)">	
+	<div class="row">
+		<div class="form-group col-md-6">
+			<label for="nome" class="control-label">Nome</label>
+			<input type="text"
+				name="nome"
+				ng-model="ctrl.cliente.nome"				
+				maxlength="60"
+				ng-maxlength="60"
+				ng-required="true"
+				class="form-control"
+				placeholder="Nome"
+				autocomplete="off"				
+				auto-focus	/>
+		</div>
+	</div>
+	<div class="row">		
+		<div class="form-group col-md-2">
+			<label for="tipoPessoa" class="control-label">Tipo</label>
+			<select name="tipoPessoa"				
+				ng-model="ctrl.cliente.tipo"
+				ng-required="true"				
+				ng-options="tp as tp.descricao for tp in ctrl.tiposPessoa track by tp.value"				
+				class="form-control">
+			</select>
+		</div>
+		<div ng-if="ctrl.cliente.tipo.value === 'FISICA'">
+			<div class="form-group col-md-2">
+				<label for="cpf" class="control-label">CPF</label>
+				<input type="text"
+					name="cpf"
+					ng-model="ctrl.cliente.cpf"
+					placeholder="CPF"
+					ng-required="false"
+					autocomplete="off"
+					ui-br-cpf-mask
+					class="form-control" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="rg" class="control-label">RG</label>
+				<input type="text"
+					name="rg"
+					ng-model="ctrl.cliente.rg"
+					placeholder="RG"
+					ng-required="false"
+					autocomplete="off"
+					class="form-control"/>
+			</div>
+		</div>		
+		<div ng-if="ctrl.cliente.tipo.value === 'JURIDICA'">
+			<div class="form-group col-md-2">
+				<label for="cnpj" class="control-label">CNPJ</label>
+				<input type="text"
+					name="cnpj"
+					ng-model="ctrl.cliente.cnpj"
+					placeholder="CNPJ"
+					ng-required="false"
+					autocomplete="off"
+					ui-br-cnpj-mask
+					class="form-control" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="ie" class="control-label">IE</label>
+				<input type="text"
+					name="ie"
+					ng-model="ctrl.cliente.ie"
+					placeholder="Insc. Estatudal"
+					ng-required="false"
+					autocomplete="off"
+					digits				
+					ui-number-mask="0"
+					ui-hide-group-sep
+					class="form-control"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-6">
+			<label for="email" class="control-label">E-mail</label>
+			<input type="email"
+				name="email"
+				ng-model="ctrl.cliente.email"
+				placeholder="E-mail"
+				ng-required="false"
+				autocomplete="off"			
+				class="form-control" />
+		</div>
+	</div>	
+	<hr />
+	<div class="row">
+	  <div class="col-md-12">
+	  	<button type="submit" class="btn btn-primary">Salvar</button>
+		<a ui-sref="servico" class="btn btn-default">Cancelar</a>
+	  </div>
+	</div>	
+</form>

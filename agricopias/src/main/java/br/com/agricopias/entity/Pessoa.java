@@ -17,8 +17,6 @@ public class Pessoa implements Serializable {
 	
 	private String nome;
 	
-	private String email;
-	
 	private TipoPessoa tipo;
 	
 	@CPF
@@ -31,24 +29,26 @@ public class Pessoa implements Serializable {
 	
 	private String ie;
 	
-	private List<Endereco> enderecos = new ArrayList<>();
+	private List<String> telefones = new ArrayList<>();//refazer mapeamento
 	
-	private List<Fone> telefones = new ArrayList<>();
+	private List<String> emails = new ArrayList<>();
+	
+	private List<Endereco> enderecos = new ArrayList<>();
 
-	public Pessoa(Long id, String nome, String email, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie) {
+	public Pessoa(Long id, String nome, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie, List<String> emails) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.email = email;
 		this.tipo = tipo;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.cnpj = cnpj;
 		this.ie = ie;
+		this.emails = emails;
 	}
 
 	public Pessoa(){}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -63,14 +63,6 @@ public class Pessoa implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public TipoPessoa getTipo() {
@@ -113,19 +105,27 @@ public class Pessoa implements Serializable {
 		this.ie = ie;
 	}
 
+	public List<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
+	}
+
+	public List<String> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(List<String> emails) {
+		this.emails = emails;
+	}
+
 	public List<Endereco> getEnderecos() {
 		return enderecos;
 	}
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
-	}
-
-	public List<Fone> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(List<Fone> telefones) {
-		this.telefones = telefones;
 	}
 }

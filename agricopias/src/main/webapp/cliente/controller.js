@@ -1,10 +1,10 @@
-app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibModal', 'Cliente', function($scope, $state, $stateParams, $uibModal, Cliente){
+app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibModal', 'Cliente', 'EnumService', function($scope, $state, $stateParams, $uibModal, Cliente, EnumService){
 	var self = this;
 	
 	self.criteria = '';
 	
 	var _loadData = function() {
-		
+		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});
 	};
 	
 	var _goToList = function() {
@@ -46,5 +46,5 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	self.edit = function() {
 		self.find();
 		_loadData();
-	};
+	};	
 }]);

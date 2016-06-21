@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.agricopias.enums.TipoPessoa;
 import br.com.agricopias.enums.Unidade;
 
 @Controller
@@ -12,7 +13,12 @@ import br.com.agricopias.enums.Unidade;
 public class EnumController {
 	
 	@RequestMapping(value = "/unidade", method = RequestMethod.GET)
-	public @ResponseBody Unidade[] findAll() {
+	public @ResponseBody Unidade[] findAllUnidades() {
 		return Unidade.values();
+	}
+	
+	@RequestMapping(value = "tipoPessoa", method = RequestMethod.GET)
+	public @ResponseBody TipoPessoa[] findAllTiposPessoa() {
+		return TipoPessoa.values();
 	}
 }
