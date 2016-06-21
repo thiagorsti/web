@@ -8,7 +8,7 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
 	});
 	
 //	$locationProvider.html5Mode(false).hashPrefix('');	
-	$urlRouterProvider.otherwise('/servico');
+	$urlRouterProvider.otherwise('/cliente');
 	
 	$stateProvider
     // HOME STATES AND NESTED VIEWS ========================================
@@ -69,5 +69,20 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
 	.state('servicoAdd', {
     	url: '/servico/add',
     	templateUrl: '../servico/add.html'    	
+    })
+    
+    .state('cliente', {
+		url: '/cliente',
+		templateUrl: '../cliente/list.html'
+	})	
+	
+	.state('clienteEdit', {
+		url: '/cliente/edit/:id',
+    	templateUrl: '../cliente/edit.html'
+	})
+	
+	.state('clienteAdd', {
+    	url: '/cliente/add',
+    	templateUrl: '../cliente/add.html'    	
     })
 }]);

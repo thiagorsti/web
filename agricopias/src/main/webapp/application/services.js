@@ -1,5 +1,5 @@
-app.factory('TipoServico', ['$resource', function($resource){
-	return $resource('/servico/tipos/:id', 
+app.factory('Cliente', ['$resource', function($resource){
+	return $resource('/clientes/:id',
 			{id : '@id'},
 			{
 				update: 
@@ -8,9 +8,9 @@ app.factory('TipoServico', ['$resource', function($resource){
 				}
 			}
 	);
-}]);
+}])
 
-app.factory('Servico', ['$resource', function($resource){
+.factory('Servico', ['$resource', function($resource){
 	return $resource('/servicos/:id',
 			{id : '@id'},
 			{
@@ -20,9 +20,21 @@ app.factory('Servico', ['$resource', function($resource){
 				}
 			}
 	);
-}]);
+}])
 
-app.factory('EnumService', ['$resource', function($resource){	
+.factory('TipoServico', ['$resource', function($resource){
+	return $resource('/servico/tipos/:id', 
+			{id : '@id'},
+			{
+				update: 
+				{
+					method: 'PUT'
+				}
+			}
+	);
+}])
+
+.factory('EnumService', ['$resource', function($resource){	
 	return $resource('/enums/:enum',
 			{enum : 'enum'}, 
 			{

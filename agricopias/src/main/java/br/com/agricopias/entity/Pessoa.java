@@ -1,23 +1,61 @@
 package br.com.agricopias.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Pessoa implements Serializable {
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.agricopias.enums.TipoPessoa;
+
+public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private Long id;
 	
 	private String nome;
 	
 	private String email;
 	
-	private List<Endereco> enderecos;
+	private TipoPessoa tipo;
 	
-	private List<Fone> telefones;
+	@CPF
+	private String cpf;
+	
+	private String rg;
+	
+	@CNPJ
+	private String cnpj;
+	
+	private String ie;
+	
+	private List<Endereco> enderecos = new ArrayList<>();
+	
+	private List<Fone> telefones = new ArrayList<>();
 
-	private Boolean excluido;
+	public Pessoa(Long id, String nome, String email, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.tipo = tipo;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.cnpj = cnpj;
+		this.ie = ie;
+	}
+
+	public Pessoa(){}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -27,28 +65,60 @@ public abstract class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-	public void setId(Long codigo) {
-		this.id = codigo;
-	}
-
-	public Long getId() {
-		return id;
+	public String getEmail() {
+		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getEmail() {
-		return email;
+	public TipoPessoa getTipo() {
+		return tipo;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
+	public void setTipo(TipoPessoa tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getIe() {
+		return ie;
+	}
+
+	public void setIe(String ie) {
+		this.ie = ie;
 	}
 
 	public List<Endereco> getEnderecos() {
 		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public List<Fone> getTelefones() {
@@ -57,40 +127,5 @@ public abstract class Pessoa implements Serializable {
 
 	public void setTelefones(List<Fone> telefones) {
 		this.telefones = telefones;
-	}
-
-	public Boolean getExcluido() {
-		return excluido;
-	}
-
-	public void setExcluido(Boolean excluido) {
-		this.excluido = excluido;
-	}
-
-	public abstract String getNumCadPessoaComMascara();
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 }

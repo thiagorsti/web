@@ -7,6 +7,7 @@ import br.com.agricopias.enums.TipoEndereco;
 import br.com.agricopias.util.Mascara;
 
 public class Endereco implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	private Long id;

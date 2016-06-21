@@ -1,7 +1,7 @@
-<div ng-controller="ServicoController as ctrl" ng-init="ctrl.list()">		
+<div ng-controller="ClienteController as ctrl" ng-init="ctrl.list()">		
 	<div id="top" class="row">
 		<div class="col-sm-3">
-			<h2>Serviços</h2>
+			<h2>Clientes</h2>
 		</div>
 		<div class="col-sm-6">
 			
@@ -21,7 +21,7 @@
 			</div>			
 		</div>
 		<div class="col-sm-2">
-			<a ui-sref="servicoAdd" class="btn btn-primary pull-right h2">Novo</a>
+			<a ui-sref="clienteAdd" class="btn btn-primary pull-right h2">Novo</a>
 		</div>
 	</div>
 	
@@ -32,22 +32,23 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Descrição</th>
-						<th>Tipo de Serviço</th>
-						<th>Possui área chapada</th>
+						<th>Tipo</th>
+<!-- 						<th>CPF/CNPJ</th> -->
+						<th>Nome</th>
+						<th>E-mail</th>						
 						<th class="actions">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="s in ctrl.servicos | filter: ctrl.criteria">
-						<td>{{s.id}}</td>
-						<td>{{s.descricao}}</td>
-						<td>{{s.tipoServico.descricao}}</td>
-						<td>{{s.possuiAreaChapada | yesNo}}</td>
-						<td class="actions">
-							<a class="btn btn-success btn-xs" ui-sref="servicoView({id: s.id})">Visualizar</a>
-							<a class="btn btn-warning btn-xs" ui-sref="servicoEdit({id: s.id})">Editar</a>
-							<button class="btn btn-danger btn-xs"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.remove(s)">Excluir</button>
+					<tr ng-repeat="c in ctrl.clientes">
+						<td>{{c.id}}</td>
+						<td>{{c.tipo | tipoPessoa}}</td>
+						<!-- 						<td>{{c.getNumCadPessoaComMascara}}</td> -->
+						<td>{{c.nome}}
+						<td>{{c.email}}</td>
+						<td class="actions">							
+							<a class="btn btn-warning btn-xs" ui-sref="clienteEdit({id: s.id})">Visualizar/Editar</a>
+							<button class="btn btn-danger btn-xs"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.remove(c)">Excluir</button>
 						</td>
 					</tr>
 				</tbody>
