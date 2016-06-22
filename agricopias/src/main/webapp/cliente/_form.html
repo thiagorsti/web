@@ -73,19 +73,24 @@
 					class="form-control"/>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-md-6">
-			<label for="email" class="control-label">E-mail</label>
-			<input type="email"
-				name="email"
-				ng-model="ctrl.cliente.email"
-				placeholder="E-mail"
-				ng-required="false"
-				autocomplete="off"			
-				class="form-control" />
-		</div>
 	</div>	
+	<div class="row" ng-repeat="e in ctrl.cliente.emails track by $index">
+		<div class="form-group col-md-6">			
+			<label class="control-label" ng-if="$first">E-mails</label>
+			<div class="input-group">		
+				<input type="email"
+					ng-model="ctrl.cliente.emails[$index]"
+					placeholder="E-mail"
+					ng-required="true"
+					autocomplete="off"	
+					class="form-control" />
+				<span class="input-group-addon">
+					<button href="#" class="btn btn-danger btn-xs">Excluir</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<button type="button" class="btn btn-default" ng-click="ctrl.addEmail()">Adicioar E-mail</button>
 	<hr />
 	<div class="row">
 	  <div class="col-md-12">
@@ -94,3 +99,6 @@
 	  </div>
 	</div>	
 </form>
+<pre>
+	{{ctrl.cliente.emails}}
+</pre>

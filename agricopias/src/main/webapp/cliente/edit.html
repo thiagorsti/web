@@ -1,0 +1,4 @@
+<div ng-controller="ClienteController as ctrl" ng-init="ctrl.edit()">
+	<h3 class="page-header">Editar Cliente # {{ctrl.cliente.id}}</h3>
+	<div ng-include="'cliente/_form.html'"></div>
+</div>

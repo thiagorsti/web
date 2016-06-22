@@ -46,5 +46,16 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	self.edit = function() {
 		self.find();
 		_loadData();
-	};	
+	};
+	
+	self.addEmail = function() {
+		if (!self.cliente.emails) {
+			self.cliente.emails = [];
+		}		
+		self.cliente.emails.push('');		
+	};
+	
+	self.removeEmail = function(index) {
+		self.cliente.emails.splice(index, 1);
+	};
 }]);

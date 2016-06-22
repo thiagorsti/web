@@ -3,8 +3,7 @@
 		<div class="col-sm-3">
 			<h2>Clientes</h2>
 		</div>
-		<div class="col-sm-6">
-			
+		<div class="col-sm-6">			
 			<div class="input-group h2">
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-search"></span>
@@ -24,7 +23,6 @@
 			<a ui-sref="clienteAdd" class="btn btn-primary pull-right h2">Novo</a>
 		</div>
 	</div>
-	
 	<hr />
 	<div id="list" class="row">
 		<div class="table-responsive col-md-12">
@@ -47,7 +45,7 @@
 						<td>{{c.nome}}
 						<td>{{c.email}}</td>
 						<td class="actions">							
-							<a class="btn btn-warning btn-xs" ui-sref="clienteEdit({id: s.id})">Visualizar/Editar</a>
+							<a class="btn btn-warning btn-xs" ui-sref="clienteEdit({id: c.id})">Visualizar/Editar</a>
 							<button class="btn btn-danger btn-xs"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.remove(c)">Excluir</button>
 						</td>
 					</tr>
