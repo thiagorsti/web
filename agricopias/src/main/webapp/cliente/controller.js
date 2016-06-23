@@ -5,6 +5,7 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	var _loadData = function() {
 		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});
+		self.tiposEndereco = EnumService.query({enum: 'tipoEndereco'});
 	};
 	
 	var _goToList = function() {
@@ -57,5 +58,27 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.removeEmail = function(index) {
 		self.cliente.emails.splice(index, 1);
+	};
+	
+	self.addTelefone = function() {
+		if (!self.cliente.telefones) {
+			self.cliente.telefones = [];
+		}
+		self.cliente.telefones.push('');
+	};
+	
+	self.removeTelefone = function(index) {
+		self.cliente.telefones.splice(index, 1);
+	};
+	
+	self.addEndereco = function() {
+		if (!self.cliente.enderecos) {
+			self.cliente.enderecos = [];
+		}
+		self.cliente.enderecos.push({});
+	};
+	
+	self.removeEndereco = function(index) {
+		self.cliente.enderecos.splice(index, 1);
 	};
 }]);

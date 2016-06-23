@@ -12,9 +12,9 @@ public class Endereco implements Serializable {
 
 	private Long id;
 
-	private String logradouro;
-
 	private TipoEndereco tipoEndereco;
+	
+	private String logradouro;
 
 	private Integer numero;
 
@@ -24,7 +24,7 @@ public class Endereco implements Serializable {
 
 	private String bairro;
 
-	private String cep = null;
+	private String cep;
 
 	public void setId(Long id) {
 		this.id = id;
@@ -34,20 +34,20 @@ public class Endereco implements Serializable {
 		return id;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
 	public TipoEndereco getTipoEndereco() {
 		return tipoEndereco;
 	}
 
 	public void setTipoEndereco(TipoEndereco tipoEndereco) {
 		this.tipoEndereco = tipoEndereco;
+	}
+	
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public Integer getNumero() {
@@ -79,7 +79,7 @@ public class Endereco implements Serializable {
 	}
 
 	public void setCep(String cep) {
-		this.cep = cep.replaceAll("\\D", "");
+		this.cep = cep;
 	}
 
 	public Cidade getCidade() {
