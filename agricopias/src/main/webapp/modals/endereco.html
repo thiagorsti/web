@@ -1,0 +1,50 @@
+<div class="row col-md-12">
+	<div class="form-group col-md-6">			
+		<select ng-model="e.tipoEndereco"
+			ng-required="true"				
+			ng-options="te as te.descricao for te in ctrl.tiposEndereco track by te.value"				
+			class="form-control">
+		</select>
+	</div>
+	<div class="form-group col-md-6">									
+		<input type="text"										
+			ng-model="e.logradouro"				
+			maxlength="60"
+			ng-maxlength="60"
+			ng-required="true"
+			class="form-control"
+			placeholder="Logradouro"
+			autocomplete="off" />
+	</div>
+</div>
+<div>		
+	<div class="form-group col-md-6">									
+		<input type="text"										
+			ng-model="e.numero"				
+			maxlength="60"
+			ng-maxlength="60"										
+			class="form-control"
+			placeholder="Número"
+			digits				
+			ui-number-mask="0"
+			ui-hide-group-sep										
+			autocomplete="off" />
+	</div>		
+	<div class="form-group col-md-6">									
+		<input type="text"										
+			ng-model="e.complemento"				
+			maxlength="60"
+			ng-maxlength="60"										
+			class="form-control"
+			placeholder="Complemento"																				
+			autocomplete="off" />
+	</div>
+	<div class="form-group col-md-3">
+		<input type="text"										
+			ng-model="e.cep"						
+			class="form-control"
+			placeholder="CEP"
+			ui-br-cep-mask																				
+			autocomplete="off" />
+	</div>
+</div>

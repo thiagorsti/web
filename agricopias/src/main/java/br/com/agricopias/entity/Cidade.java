@@ -13,6 +13,16 @@ public class Cidade implements Serializable {
 	private Integer codigoIbge;
 	
 	private Estado estado;
+	
+	public Cidade(){}
+
+	public Cidade(Long id, String nome, Integer codigoIbge, Estado estado) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.codigoIbge = codigoIbge;
+		this.estado = estado;
+	}
 
 	public Long getId() {
 		return id;

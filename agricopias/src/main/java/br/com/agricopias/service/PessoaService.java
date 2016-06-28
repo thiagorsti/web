@@ -8,19 +8,35 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.agricopias.entity.Endereco;
 import br.com.agricopias.entity.Pessoa;
+import br.com.agricopias.enums.TipoEndereco;
 import br.com.agricopias.enums.TipoPessoa;
 
 @Service
 public class PessoaService {
 
+	@Autowired
+	private CidadeService cidadeService;
+	
 	private static final List<Pessoa> pessoas = new ArrayList<>();
 	
 	@PostConstruct
-	public void init() {
-		pessoas.add(new Pessoa(1L, "Thiago", TipoPessoa.FISICA, "00368634167", "4130660", null, null, Arrays.asList(new String[]{"thiago@email1.com", "thiago@email2.com.br"})));
+	public void init() {		
+		Endereco endereco = new Endereco();
+		endereco.setBairro("Jd Maria Inez");
+		endereco.setCep("74914465");
+		endereco.setCidade(cidadeService.findById(1L));
+		endereco.setComplemento("Apto 108, Bloco 2");
+		endereco.setId(1L);
+		endereco.setLogradouro("Rua Princesa Isabel");
+		endereco.setTipoEndereco(TipoEndereco.RESIDENCIAL);
+		List<Endereco> enderecos = new ArrayList<>();
+		enderecos.add(endereco);
+		pessoas.add(new Pessoa(1L, "Thiago", TipoPessoa.FISICA, "00368634167", "4130660", null, null, Arrays.asList(new String[]{"thiago@email1.com", "thiago@email2.com.br"}), enderecos));
 		pessoas.add(new Pessoa(2L, "Moema", TipoPessoa.FISICA, "85787324480", "112233", null, null, Arrays.asList(new String[]{"moema@email1.com", "moema@email2.com.br"})));
 		pessoas.add(new Pessoa(3L, "Empresa cliente", TipoPessoa.JURIDICA, null, null, "53757856000172", "6546546544", Arrays.asList(new String[]{"empresa@email1.com", "empresa@email2.com.br"})));
 	}

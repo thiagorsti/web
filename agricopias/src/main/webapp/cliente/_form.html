@@ -73,157 +73,81 @@
 					class="form-control"/>
 			</div>
 		</div>
-	</div>	
-	<div class="row col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading">Telefone(s)</div>
-	  		<div class="panel-body">
-	    		<table class="table" cellspacing="0" cellpadding="0">
-					<thead>
-						<tr>
-							<td></td>												
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="t in ctrl.cliente.telefones track by $index">
-							<td>
-								<div class="form-group">														
-									<input type="text"
-										ng-model="ctrl.cliente.telefones[$index]"
-										placeholder="Telefone"
-										ng-required="true"
-										autocomplete="off"
-										ui-br-phone-number	
-										class="form-control" />
-								</div>
-							</td>
-							<td>
-								<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeTelefone($index)">
-									<span class="glyphicon glyphicon-trash"></span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<button type="button" class="btn btn-default" ng-click="ctrl.addTelefone()">Adicioar Telefone</button>
-	  		</div>
-		</div>
-	</div>	
-	<div class="row col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading">Email(s)</div>
-	  		<div class="panel-body">
-	    		<table class="table" cellspacing="0" cellpadding="0">
-					<thead>
-						<tr>
-							<td></td>												
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="e in ctrl.cliente.emails track by $index">
-							<td>
-								<div class="form-group">														
-									<input type="email"
-										ng-model="ctrl.cliente.emails[$index]"
-										placeholder="E-mail"
-										ng-required="true"
-										autocomplete="off"	
-										class="form-control" />
-								</div>
-							</td>
-							<td>
-								<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEmail($index)">
-	  								<span class="glyphicon glyphicon-trash"></span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<button type="button" class="btn btn-default" ng-click="ctrl.addEmail()">Adicioar E-mail</button>
-	  		</div>
+	</div>
+	<div class="row">  		
+    	<div class="col-md-4">
+       		<div class="panel panel-default">
+				<div class="panel-heading">Telefone(s)</div>
+  				<div class="panel-body">
+  					<div class="row" ng-repeat="t in ctrl.cliente.telefones track by $index">
+		  				<div class="form-group col-md-7">
+							<input type="text"
+								ng-model="ctrl.cliente.telefones[$index]"
+								placeholder="Telefone"
+								ng-required="true"
+								autocomplete="off"
+								ui-br-phone-number	
+								class="form-control" />								
+						</div>
+						<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeTelefone($index)">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</div>
+					<button type="button" class="btn btn-default" ng-click="ctrl.addTelefone()">Adicioar Telefone</button>
+  				</div>
+  			</div>
+    	</div>
+		<div class="col-md-6">
+			<div class="col-md-12">
+		    	<div class="panel panel-default">
+					<div class="panel-heading">E-mail(s)</div>
+  					<div class="panel-body">
+  						<div class="row" ng-repeat="t in ctrl.cliente.emails track by $index">
+				  			<div class="form-group col-md-8">
+								<input type="email"
+									ng-model="ctrl.cliente.emails[$index]"
+									placeholder="E-mail"
+									ng-required="true"
+									autocomplete="off"	
+									class="form-control" />							
+							</div>
+							<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEmail($index)">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+						</div>
+						<button type="button" class="btn btn-default" ng-click="ctrl.addEmail()">Adicioar E-mail</button>
+  					</div>
+  				</div>
+		   	</div>
 		</div>
 	</div>
-	<div class="row col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">Endereços(s)</div>
-	  		<div class="panel-body">
-	  			<table class="table" cellspacing="0" cellpadding="0">
-					<thead>
-						<tr>
-							<th>Tipo</th>												
-							<th>Logradouro</th>
-							<th>Número</th>
-							<th class="actions"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="e in ctrl.cliente.enderecos track by $index">
-							<td>
-								<div class="form-group col-md-6">			
-									<select ng-model="e.tipoEndereco"
-										ng-required="true"				
-										ng-options="te as te.descricao for te in ctrl.tiposEndereco track by te.value"				
-										class="form-control">
-									</select>
-								</div>
-							</td>
-							<td>
-								<div class="form-group col-md-6">									
-									<input type="text"										
-										ng-model="e.logradouro"				
-										maxlength="60"
-										ng-maxlength="60"
-										ng-required="true"
-										class="form-control"
-										placeholder="Logradouro"
-										autocomplete="off" />
-								</div>
-							</td>
-							<td>
-								<div class="form-group col-md-6">									
-									<input type="text"										
-										ng-model="e.numero"				
-										maxlength="60"
-										ng-maxlength="60"										
-										class="form-control"
-										placeholder="Número"
-										digits				
-										ui-number-mask="0"
-										ui-hide-group-sep										
-										autocomplete="off" />
-								</div>
-							</td>
-							<td>
-								<div class="form-group col-md-6">									
-									<input type="text"										
-										ng-model="e.complemento"				
-										maxlength="60"
-										ng-maxlength="60"										
-										class="form-control"
-										placeholder="Complemento"																				
-										autocomplete="off" />
-								</div>
-							</td>
-							
-							<td>
-								<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEndereco($index)">
-									<span class="glyphicon glyphicon-trash"></span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<button type="button" class="btn btn-default" ng-click="ctrl.addEndereco()">Adicioar Endereço</button>
-	  		</div>
-	  	</div>
-	</div>	
+	<div class="row">
+     	<div class="col-md-12">
+        	<div class="panel panel-default">
+				<div class="panel-heading">Endereço(s)</div>
+	 			<div class="panel-body">
+	 				<div class="row" ng-repeat="e in ctrl.cliente.enderecos track by $index">
+	 					<div class="form-group col-md-2">
+				  			<select ng-model="e.tipoEndereco"
+								ng-required="true"
+								ng-options="te as te.descricao for te in ctrl.tiposEndereco track by te.value"
+								class="form-control">
+							</select>
+						</div>						
+<!-- 						<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEmail($index)"> -->
+<!-- 							<span class="glyphicon glyphicon-trash"></span> -->
+<!-- 						</button> -->
+					</div>
+					<button type="button" class="btn btn-default" ng-click="ctrl.addEndereco()">Adicioar Endereço</button>
+	 			</div>
+	 		</div>
+     	</div>  		
+  	</div>  	
 	<div class="row col-md-12">
 		<hr />
 		<div class="col-md-12">
 	  		<button type="submit" class="btn btn-primary">Salvar</button>
-			<a ui-sref="servico" class="btn btn-default">Cancelar</a>
+			<a ui-sref="cliente" class="btn btn-default">Cancelar</a>
 	  	</div>
-	</div>	
+	</div>		
 </form>

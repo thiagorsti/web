@@ -36,6 +36,10 @@ public class Pessoa implements Serializable {
 	private List<Endereco> enderecos = new ArrayList<>();
 
 	public Pessoa(Long id, String nome, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie, List<String> emails) {
+		this(id, nome, tipo, cpf, rg, cnpj, ie, emails, null);
+	}
+
+	public Pessoa(Long id, String nome, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie,	List<String> emails, List<Endereco> enderecos) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -43,8 +47,9 @@ public class Pessoa implements Serializable {
 		this.cpf = cpf;
 		this.rg = rg;
 		this.cnpj = cnpj;
-		this.ie = ie;
+		this.ie = ie;		
 		this.emails = emails;
+		this.enderecos = enderecos;
 	}
 
 	public Pessoa(){}

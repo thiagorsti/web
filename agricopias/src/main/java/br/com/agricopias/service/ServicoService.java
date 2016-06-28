@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.agricopias.entity.Servico;
@@ -15,11 +14,8 @@ import br.com.agricopias.entity.Servico;
 @Service
 public class ServicoService {
 
-private static final List<Servico> servicos = new ArrayList<>();
+	private static final List<Servico> servicos = new ArrayList<>();
 	
-	@Autowired
-	private TipoServicoService tipoServicoService;
-
 	@PostConstruct
 	public void init() {
 		

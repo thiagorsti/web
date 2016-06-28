@@ -5,7 +5,7 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	var _loadData = function() {
 		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});
-		self.tiposEndereco = EnumService.query({enum: 'tipoEndereco'});
+		self.tiposEndereco = EnumService.query({enum: 'tipoEndereco'});		
 	};
 	
 	var _goToList = function() {
@@ -46,7 +46,7 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.edit = function() {
 		self.find();
-		_loadData();
+		_loadData();		
 	};
 	
 	self.addEmail = function() {

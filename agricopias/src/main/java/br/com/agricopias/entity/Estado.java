@@ -2,9 +2,12 @@ package br.com.agricopias.entity;
 
 import java.io.Serializable;
 import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Estado implements Serializable {
 
@@ -18,7 +21,18 @@ public class Estado implements Serializable {
 
 	private Integer codigoIbge;
 
-	private List<Cidade> cidades;
+	@JsonIgnore
+	private List<Cidade> cidades = new ArrayList<>();
+	
+	public Estado(){}
+	
+	public Estado(Long id, String nome, String sigla, Integer codigoIbge) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.sigla = sigla;
+		this.codigoIbge = codigoIbge;		
+	}
 
 	public Long getId() {
 		return id;
@@ -53,13 +67,12 @@ public class Estado implements Serializable {
 	}
 
 	public List<Cidade> getCidades() {
-		Collections.sort(cidades, new Comparator<Cidade>() {
-			Collator collator = Collator.getInstance();
-
-			public int compare(Cidade c1, Cidade c2) {
-				return collator.compare(c1.getNome().toLowerCase(), c2.getNome().toLowerCase());
-			}
-		});
+//		Collections.sort(cidades, new Comparator<Cidade>() {
+//			Collator collator = Collator.getInstance();
+//			public int compare(Cidade c1, Cidade c2) {
+//				return collator.compare(c1.getNome().toLowerCase(), c2.getNome().toLowerCase());
+//			}
+//		});
 		return cidades;
 	}
 
