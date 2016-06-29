@@ -79,66 +79,122 @@
        		<div class="panel panel-default">
 				<div class="panel-heading">Telefone(s)</div>
   				<div class="panel-body">
-  					<div class="row" ng-repeat="t in ctrl.cliente.telefones track by $index">
-		  				<div class="form-group col-md-7">
-							<input type="text"
-								ng-model="ctrl.cliente.telefones[$index]"
-								placeholder="Telefone"
-								ng-required="true"
-								autocomplete="off"
-								ui-br-phone-number	
-								class="form-control" />								
-						</div>
-						<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeTelefone($index)">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button>
+  					<div class="table-responsive col-md-12">
+	  					<table class="table table-hover" cellspacing="0" cellpadding="0">						
+							<tbody>
+								<tr class="repeat-animate" ng-repeat="t in ctrl.cliente.telefones track by $index">
+									<td>
+										<div class="form-group">
+											<input type="text"
+												ng-model="ctrl.cliente.telefones[$index]"
+												placeholder="Telefone"
+												ng-required="true"
+												autocomplete="off"
+												ui-br-phone-number	
+												class="form-control" />
+										</div>	
+									</td>
+									<td>
+										<button type="button" class="btn btn-danger"  
+											ng-confirm-message="Confirma a exclusão?" 
+											ng-confirm="ctrl.removeTelefone($index)"
+											uib-popover="Excluir"
+											popover-trigger="mouseenter"
+											popover-append-to-body="true">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<button type="button" class="btn btn-default" ng-click="ctrl.addTelefone()">Adicioar Telefone</button>
   				</div>
   			</div>
     	</div>
-		<div class="col-md-6">
-			<div class="col-md-12">
-		    	<div class="panel panel-default">
-					<div class="panel-heading">E-mail(s)</div>
-  					<div class="panel-body">
-  						<div class="row" ng-repeat="t in ctrl.cliente.emails track by $index">
-				  			<div class="form-group col-md-8">
-								<input type="email"
-									ng-model="ctrl.cliente.emails[$index]"
-									placeholder="E-mail"
-									ng-required="true"
-									autocomplete="off"	
-									class="form-control" />							
-							</div>
-							<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEmail($index)">
-								<span class="glyphicon glyphicon-trash"></span>
-							</button>
-						</div>
-						<button type="button" class="btn btn-default" ng-click="ctrl.addEmail()">Adicioar E-mail</button>
-  					</div>
+    	<div class="col-md-6">
+       		<div class="panel panel-default">
+				<div class="panel-heading">E-mail(s)</div>
+  				<div class="panel-body">
+  					<div class="table-responsive col-md-12">
+	  					<table class="table table-hover" cellspacing="0" cellpadding="0">						
+							<tbody>
+								<tr class="repeat-animate" ng-repeat="e in ctrl.cliente.emails track by $index">
+									<td>
+										<div class="form-group">
+											<input type="email"
+												ng-model="ctrl.cliente.emails[$index]"
+												placeholder="E-mail"
+												ng-required="true"
+												autocomplete="off"	
+												class="form-control" />
+										</div>	
+									</td>
+									<td>
+										<button type="button" class="btn btn-danger"  
+											ng-confirm-message="Confirma a exclusão?" 
+											ng-confirm="ctrl.removeEmail($index)"
+											uib-popover="Excluir"
+											popover-trigger="mouseenter"
+											popover-append-to-body="true">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button type="button" class="btn btn-default" ng-click="ctrl.addEmail()">Adicioar E-mail</button>
   				</div>
-		   	</div>
-		</div>
+  			</div>
+    	</div>
 	</div>
 	<div class="row">
      	<div class="col-md-12">
         	<div class="panel panel-default">
 				<div class="panel-heading">Endereço(s)</div>
 	 			<div class="panel-body">
-	 				<div class="row" ng-repeat="e in ctrl.cliente.enderecos track by $index">
-	 					<div class="form-group col-md-2">
-				  			<select ng-model="e.tipoEndereco"
-								ng-required="true"
-								ng-options="te as te.descricao for te in ctrl.tiposEndereco track by te.value"
-								class="form-control">
-							</select>
-						</div>						
-<!-- 						<button type="button" class="btn btn-danger"  ng-confirm-message="Confirma a exclusão?" ng-confirm="ctrl.removeEmail($index)"> -->
-<!-- 							<span class="glyphicon glyphicon-trash"></span> -->
-<!-- 						</button> -->
+	 				<div class="table-responsive col-md-12">
+	  					<table class="table table-hover" cellspacing="0" cellpadding="0">
+	  						<thead>
+								<tr>
+									<th>#</th>
+									<th>Tipo</th>			
+									<th>Logradouro</th>
+									<th>Cidade</th>
+									<th>Bairro</th>						
+									<th class="actions">Ações</th>
+								</tr>
+							</thead>						
+							<tbody>
+								<tr ng-repeat="e in ctrl.cliente.enderecos track by $index">
+									<td>{{$index}}</td>
+									<td>{{e.tipo.descricao}}</td>
+									<td>{{e.logradouro}}</td>
+									<td>{{e.cidade.nome}}-{{e.cidade.estado.sigla}}</td>
+									<td>{{e.bairro}}</td>
+									<td>
+										<button type="button" class="btn btn-warning" 
+											ng-click="ctrl.editEndereco($index)"											
+											uib-popover="Editar"
+											popover-trigger="mouseenter"
+											popover-append-to-body="true">
+											<span class="glyphicon glyphicon-edit"></span>
+										</button>
+										<button type="button" class="btn btn-danger"  
+												ng-confirm-message="Confirma a exclusão?" 
+												ng-confirm="ctrl.removeEndereco($index)"
+												uib-popover="Excluir"
+												popover-trigger="mouseenter"
+												popover-append-to-body="true">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<button type="button" class="btn btn-default" ng-click="ctrl.addEndereco()">Adicioar Endereço</button>
+					<button type="button" class="btn btn-default" ng-click="ctrl.addEndereco()">Adicioar Endereço</button>					
 	 			</div>
 	 		</div>
      	</div>  		

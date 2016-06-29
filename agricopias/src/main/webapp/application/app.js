@@ -1,5 +1,5 @@
 //var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors', 'ngResource']);
-var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngMessages', 'ngResource', 'ngSanitize', 'bootstrap.angular.validation', 'ui.utils.masks']);
+var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngMessages', 'ngResource', 'ngSanitize', 'ngAnimate', 'bootstrap.angular.validation', 'ui.utils.masks']);
 
 app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', function($uibTooltipProvider, $stateProvider, $urlRouterProvider) {
 	
@@ -85,4 +85,17 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
     	url: '/cliente/add',
     	templateUrl: '../cliente/add.html'    	
     })
-}]);
+}])
+.animation('.repeat-animate', function () {
+	return {
+		enter: 
+			function (element, done) {				
+				element.hide().show(320, function(){					
+					var scope = element.scope();
+					scope.$evalAsync(function(){ 
+						element.find('input:last')[0].focus();
+					});
+				});
+			}
+	};
+});

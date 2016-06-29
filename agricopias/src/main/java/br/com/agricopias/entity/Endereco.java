@@ -12,7 +12,7 @@ public class Endereco implements Serializable {
 
 	private Long id;
 
-	private TipoEndereco tipoEndereco;
+	private TipoEndereco tipo;
 	
 	private String logradouro;
 
@@ -34,12 +34,12 @@ public class Endereco implements Serializable {
 		return id;
 	}
 
-	public TipoEndereco getTipoEndereco() {
-		return tipoEndereco;
+	public TipoEndereco getTipo() {
+		return tipo;
 	}
 
-	public void setTipoEndereco(TipoEndereco tipoEndereco) {
-		this.tipoEndereco = tipoEndereco;
+	public void setTipo(TipoEndereco tipo) {
+		this.tipo = tipo;
 	}
 	
 	public String getLogradouro() {
