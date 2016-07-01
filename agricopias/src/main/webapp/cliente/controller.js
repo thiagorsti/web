@@ -4,8 +4,7 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	self.criteria = '';
 	
 	var _loadData = function() {
-		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});
-		self.tiposEndereco = EnumService.query({enum: 'tipoEndereco'});		
+		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});				
 	};
 	
 	var _goToList = function() {
@@ -17,7 +16,11 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	};
 	
 	self.find = function() {
-		self.cliente = Cliente.get({ id: $stateParams.id });		
+		//self.cliente = Cliente.get({ id: $stateParams.id });
+		Cliente.get({ id: $stateParams.id }).$promise.then(function(cliente) {
+		      self.cliente = cliente;
+		      self.showEnderecoForm(0);
+	    });		
 	};
 	
 	self.remove = function(cliente) {
@@ -80,5 +83,22 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.removeEndereco = function(index) {
 		self.cliente.enderecos.splice(index, 1);
-	};
+	};	
+	
+	self.showEnderecoForm = function($index) {
+		var endereco = {};
+		if ($index >= 0) {			
+			endereco = self.cliente.enderecos[$index];			
+		}		
+		var modalInstance = $uibModal.open({
+			templateUrl: "/endereco/_form.html",
+			controller: "EnderecoController",
+			controllerAs: "endCtrl",
+			resolve: {
+				endereco: function() {
+					return endereco;
+				}
+			}
+		});	
+	};	
 }]);

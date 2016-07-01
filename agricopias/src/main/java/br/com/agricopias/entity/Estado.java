@@ -1,13 +1,10 @@
 package br.com.agricopias.entity;
 
 import java.io.Serializable;
-import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class Estado implements Serializable {
 
@@ -21,7 +18,7 @@ public class Estado implements Serializable {
 
 	private Integer codigoIbge;
 
-	@JsonIgnore
+	@JsonBackReference
 	private List<Cidade> cidades = new ArrayList<>();
 	
 	public Estado(){}

@@ -33,7 +33,7 @@ public class PessoaService {
 		endereco.setComplemento("Apto 108, Bloco 2");
 		endereco.setId(1L);
 		endereco.setLogradouro("Rua Princesa Isabel");
-		endereco.setTipo(TipoEndereco.RESIDENCIAL);
+		endereco.setTipo(TipoEndereco.COMERCIAL);
 		List<Endereco> enderecos = new ArrayList<>();
 		enderecos.add(endereco);
 		pessoas.add(new Pessoa(1L, "Thiago", TipoPessoa.FISICA, "00368634167", "4130660", null, null, Arrays.asList(new String[]{"thiago@email1.com", "thiago@email2.com.br"}), enderecos));

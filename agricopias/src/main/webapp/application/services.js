@@ -41,4 +41,10 @@ app.factory('Cliente', ['$resource', function($resource){
 				query: {method:'GET', isArray: true}
 			}
 	);
+}])
+
+.factory('EstadoService', ['$resource', function($resource){
+	return $resource('/estados/:id',
+			{id : '@id'}
+	);
 }]);

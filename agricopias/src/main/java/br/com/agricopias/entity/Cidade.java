@@ -2,6 +2,8 @@ package br.com.agricopias.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class Cidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -12,6 +14,7 @@ public class Cidade implements Serializable {
 	
 	private Integer codigoIbge;
 	
+	@JsonManagedReference
 	private Estado estado;
 	
 	public Cidade(){}
