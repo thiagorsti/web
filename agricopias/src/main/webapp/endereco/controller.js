@@ -25,7 +25,12 @@ app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'E
 	    });
 	};
 	
-	self.save = function() {
+	self.submit = function() {
 		var form = self.form;
+		$uibModalInstance.close();
+	};
+	
+	self.cancel = function() {
+		$uibModalInstance.dismiss();
 	};
 }]);
