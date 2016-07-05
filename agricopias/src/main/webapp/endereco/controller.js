@@ -27,7 +27,7 @@ app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'E
 	
 	self.submit = function() {
 		var form = self.form;
-		$uibModalInstance.close();
+		$uibModalInstance.close(self.endereco);
 	};
 	
 	self.cancel = function() {

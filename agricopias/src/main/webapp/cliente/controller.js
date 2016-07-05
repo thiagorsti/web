@@ -87,10 +87,10 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.showEnderecoForm = function($index) {
 		var endereco = {};
-		if ($index >= 0) {			
-			endereco = self.cliente.enderecos[$index];			
-		}		
-		var modalInstance = $uibModal.open({
+		if ($index >= 0) {
+			endereco = self.cliente.enderecos[$index];
+		}
+		$uibModal.open({
 			templateUrl: "/endereco/_form.html",
 			controller: "EnderecoController",
 			controllerAs: "endCtrl",
@@ -99,6 +99,13 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 					return endereco;
 				}
 			}
-		});	
+		}).result.then(function(editedEndereco){			
+			if ($index >= 0) {
+				self.cliente.enderecos[$index] = editedEndereco;
+			}
+			else {
+				self.cliente.enderecos.push(editedEndereco);
+			}			
+		});
 	};	
 }]);
