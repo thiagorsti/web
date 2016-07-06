@@ -93,9 +93,12 @@ app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', funct
 				element.hide().show(200, function(){					
 					var scope = element.scope();
 					scope.$evalAsync(function(){ 
-						element.find('input:last')[0].focus();
+						var input = element.find('input:last')[0];
+						if (input.value == '') {
+							input.focus();
+						}
 					});
-				});				
+				});			
 			}
 	};
 });
