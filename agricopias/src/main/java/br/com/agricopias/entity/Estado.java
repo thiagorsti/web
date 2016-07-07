@@ -4,31 +4,38 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+@Entity
 public class Estado implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4103643565140150840L;
 
+	@Id
 	private Long id;
 
+	@Column(length = 60, nullable = false)
 	private String nome;
 
+	@Column(columnDefinition = "CHAR(2)", nullable = false)
 	private String sigla;
 
-	private Integer codigoIbge;
-
 	@JsonBackReference
+	@OneToMany(mappedBy = "estado")
 	private List<Cidade> cidades = new ArrayList<>();
 	
 	public Estado(){}
 	
-	public Estado(Long id, String nome, String sigla, Integer codigoIbge) {
+	public Estado(Long id, String nome, String sigla) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sigla = sigla;
-		this.codigoIbge = codigoIbge;		
 	}
 
 	public Long getId() {
@@ -55,21 +62,7 @@ public class Estado implements Serializable {
 		this.sigla = sigla;
 	}
 
-	public Integer getCodigoIbge() {
-		return codigoIbge;
-	}
-
-	public void setCodigoIbge(Integer codigoIbge) {
-		this.codigoIbge = codigoIbge;
-	}
-
 	public List<Cidade> getCidades() {
-//		Collections.sort(cidades, new Comparator<Cidade>() {
-//			Collator collator = Collator.getInstance();
-//			public int compare(Cidade c1, Cidade c2) {
-//				return collator.compare(c1.getNome().toLowerCase(), c2.getNome().toLowerCase());
-//			}
-//		});
 		return cidades;
 	}
 

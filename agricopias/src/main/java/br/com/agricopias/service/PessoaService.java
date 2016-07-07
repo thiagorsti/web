@@ -31,7 +31,6 @@ public class PessoaService {
 		endereco.setCep("74914465");
 		endereco.setCidade(cidadeService.findById(1L));
 		endereco.setComplemento("Apto 108, Bloco 2");
-		endereco.setId(1L);
 		endereco.setLogradouro("Rua Princesa Isabel");
 		endereco.setTipo(TipoEndereco.COMERCIAL);
 		List<Endereco> enderecos = new ArrayList<>();

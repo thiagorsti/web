@@ -3,36 +3,41 @@ package br.com.agricopias.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import br.com.agricopias.enums.TipoEndereco;
-import br.com.agricopias.util.Mascara;
 
+@Embeddable
 public class Endereco implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private static final long serialVersionUID = -5734239275092579985L;
 
+	@Enumerated(EnumType.STRING)
+	@Column(length = 15, nullable = false)
 	private TipoEndereco tipo;
 	
+	@Column(length = 60, nullable = false)
 	private String logradouro;
-
+	
 	private Integer numero;
 
+	@Column(length = 60)
 	private String complemento;
 
+	@ManyToOne
+	@JoinColumn(nullable = false)
 	private Cidade cidade;
 
+	@Column(length = 60, nullable = false)
 	private String bairro;
 
+	@Column(columnDefinition = "char(9)")
 	private String cep;
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getId() {
-		return id;
-	}
 
 	public TipoEndereco getTipo() {
 		return tipo;
@@ -90,15 +95,11 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public String getCepComMascara() {
-		return Mascara.insereMascaraCep(getCep());
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
 
@@ -111,12 +112,8 @@ public class Endereco implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Endereco other = (Endereco) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (tipo != other.tipo)
 			return false;
 		return true;
 	}
-
 }

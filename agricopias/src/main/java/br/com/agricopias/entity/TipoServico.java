@@ -1,16 +1,18 @@
 package br.com.agricopias.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipo_servico")
-public class TipoServico {
+public class TipoServico implements Serializable {
+	
+	private static final long serialVersionUID = -3141669185499677825L;
 
 	@Id
 	@SequenceGenerator(name = "tipo_servico_gen", sequenceName = "tipo_servico_seq")
@@ -61,16 +63,16 @@ public class TipoServico {
 		if (getClass() != obj.getClass())
 			return false;
 		TipoServico other = (TipoServico) obj;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+		} else if (id.equals(other.id))
+			return true;
+		else if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (descricao.equals(other.descricao))
+			return true;
+		return false;
 	}
 }

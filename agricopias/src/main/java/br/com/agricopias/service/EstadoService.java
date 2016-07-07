@@ -22,8 +22,8 @@ public class EstadoService {
 	
 	@PostConstruct
 	public void init() {
-		estados.add(new Estado(1L, "Goiás", "GO", 1));
-		estados.add(new Estado(2L, "São Paulo", "SP", 2));
+		estados.add(new Estado(1L, "Goiás", "GO"));
+		estados.add(new Estado(2L, "São Paulo", "SP"));
 //		if (estados.get(0).getCidades().isEmpty()) {
 //			estados.get(0).getCidades().add(cidadeService.findById(1L));
 //			estados.get(0).getCidades().add(cidadeService.findById(2L));
