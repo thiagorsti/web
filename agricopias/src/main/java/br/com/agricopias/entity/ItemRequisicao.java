@@ -21,7 +21,7 @@ public class ItemRequisicao implements Serializable {
 	private static final long serialVersionUID = -5745397868761804311L;
 
 	@Id
-	@SequenceGenerator(name = "item_requisicao_gen", sequenceName = "item_requisicao_seq")
+	@SequenceGenerator(name = "item_requisicao_gen", sequenceName = "item_requisicao_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_requisicao_gen")
 	private Long id;	
 

@@ -5,10 +5,10 @@
 	<form name="endCtrl.form" role="form" ng-submit="endCtrl.save()">
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="tipoEndereco" class="control-label">Tipo de Endereço</label>			
-				<select name="tipoEndereco" 
+				<label for="tipoEndereco" class="control-label">Tipo de Endereço</label>
+				<select name="tipoEndereco"
 					ng-model="endCtrl.endereco.tipo"
-					ng-required="true"				
+					ng-required="true"
 					ng-options="te as te.descricao for te in endCtrl.tiposEndereco track by te.value"				
 					class="form-control"
 					auto-focus >
@@ -96,7 +96,7 @@
 				 	name="cidade" 
 				 	ng-model="endCtrl.cidade"
 				 	placeholder="Cidade"
-				 	uib-typeahead="address for address in endCtrl.getCidade($viewValue)"				 	
+				 	uib-typeahead="cidade.nome for cidade in endCtrl.getCidade($viewValue)"				 	
 				 	typeahead-min-length="3"
 				 	typeahead-wait-ms="300"
 				 	typeahead-loading="loadingLocations"

@@ -28,7 +28,7 @@ public class Pessoa implements Serializable {
 	private static final long serialVersionUID = -7312256880475029040L;
 
 	@Id
-	@SequenceGenerator(name = "pessoa_gen", sequenceName = "pessoa_seq")
+	@SequenceGenerator(name = "pessoa_gen", sequenceName = "pessoa_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_gen")
 	private Long id;
 	
@@ -74,23 +74,9 @@ public class Pessoa implements Serializable {
 		uniqueConstraints = @UniqueConstraint(columnNames = {"pessoa_id", "tipo"})		
 	)
 	private List<Endereco> enderecos = new ArrayList<>();
-
-	public Pessoa(Long id, String nome, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie, List<String> emails) {
-		this(id, nome, tipo, cpf, rg, cnpj, ie, emails, null);
-	}
-
-	public Pessoa(Long id, String nome, TipoPessoa tipo, String cpf, String rg, String cnpj, String ie,	List<String> emails, List<Endereco> enderecos) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.tipo = tipo;
-		this.cpf = cpf;
-		this.rg = rg;
-		this.cnpj = cnpj;
-		this.ie = ie;		
-		this.emails = emails;
-		this.enderecos = enderecos;
-	}
+	
+	@Column(nullable = false)
+	private Boolean hidden = Boolean.FALSE;
 
 	public Pessoa(){}
 
@@ -172,6 +158,14 @@ public class Pessoa implements Serializable {
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
+	}
+
+	public Boolean getHidden() {
+		return hidden;
+	}
+
+	public void setHidden(Boolean hidden) {
+		this.hidden = hidden;
 	}
 
 	@Override

@@ -54,12 +54,15 @@ public class Requisicao implements Serializable {
 	
 	@Column(nullable = false)
 	private Boolean paga;
+	
+	@Column(nullable = false)
+	private Boolean hidden = Boolean.FALSE;
 
 	public List<ItemRequisicao> getItensRequisicao() {
 		return itensRequisicao;
 	}
 
-	public void setItemRequisicao(List<ItemRequisicao> itensRequisicao) {
+	public void setItensRequisicao(List<ItemRequisicao> itensRequisicao) {
 		this.itensRequisicao = itensRequisicao;
 	}
 
@@ -172,6 +175,14 @@ public class Requisicao implements Serializable {
 
 	public void setPaga(Boolean paga) {
 		this.paga = paga;
+	}
+
+	public Boolean getHidden() {
+		return hidden;
+	}
+
+	public void setHidden(Boolean hidden) {
+		this.hidden = hidden;
 	}
 
 	@Override

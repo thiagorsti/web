@@ -1,4 +1,4 @@
-app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'EnumService', 'EstadoService', 'endereco', function($scope, $http, $uibModalInstance, EnumService, EstadoService, endereco){
+app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'EnumService', 'EstadoService', 'CidadeService', 'endereco', function($scope, $http, $uibModalInstance, EnumService, EstadoService, CidadeService, endereco){
 	var self = this;
 	
 	self.endereco = angular.copy(endereco);
@@ -11,18 +11,14 @@ app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'E
 		}		
     });
 	
-	self.getCidade = function(val) {
-		return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
-			params: {
-				address: val,
-				sensor: false
-			}
-	    }).then(function(response){
-	    	console.log(response);
-	      return response.data.results.map(function(item){
-	        return item.formatted_address;
-	      });
-	    });
+	self.getCidade = function(nome) {	
+		var ufId = self.uf.id;
+		console.log(ufId);
+		console.log(nome);
+		return CidadeService.query({
+			ufId: ufId,
+			nome: nome
+		}).$promise;
 	};
 	
 	self.submit = function() {

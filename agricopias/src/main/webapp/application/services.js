@@ -1,6 +1,6 @@
 app.factory('Cliente', ['$resource', function($resource){
 	return $resource('/clientes/:id',
-			{id : '@id'},
+			{id: '@id'},
 			{
 				update: 
 				{
@@ -12,7 +12,7 @@ app.factory('Cliente', ['$resource', function($resource){
 
 .factory('Servico', ['$resource', function($resource){
 	return $resource('/servicos/:id',
-			{id : '@id'},
+			{id: '@id'},
 			{
 				update: 
 				{
@@ -24,7 +24,7 @@ app.factory('Cliente', ['$resource', function($resource){
 
 .factory('TipoServico', ['$resource', function($resource){
 	return $resource('/servico/tipos/:id', 
-			{id : '@id'},
+			{id: '@id'},
 			{
 				update: 
 				{
@@ -38,13 +38,19 @@ app.factory('Cliente', ['$resource', function($resource){
 	return $resource('/enums/:enum',
 			{enum : 'enum'}, 
 			{
-				query: {method:'GET', isArray: true}
+				query: {method: 'GET', isArray: true}
 			}
 	);
 }])
 
 .factory('EstadoService', ['$resource', function($resource){
 	return $resource('/estados/:id',
-			{id : '@id'}
+			{id: '@id'}
+	);
+}])
+
+.factory('CidadeService', ['$resource', function($resource){
+	return $resource('/cidades/:id',
+			{id: '@id'}
 	);
 }]);

@@ -22,7 +22,7 @@ public class Servico implements Serializable {
 	private static final long serialVersionUID = -2382599820776217681L;
 
 	@Id
-	@SequenceGenerator(name = "servico_gen", sequenceName = "servico_seq")
+	@SequenceGenerator(name = "servico_gen", sequenceName = "servico_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "servico_gen")
 	private Long id;
 	
@@ -49,7 +49,7 @@ public class Servico implements Serializable {
 	@Column(length = 30)
 	private Unidade unidade;
 	
-	@Column(nullable = false)
+	@Column(name = "possui_interv_dim", nullable = false)
 	private Boolean possuiIntervaloDimensoes;	
 	
 	@Column(name = "lado1_inicio", scale = 5, precision = 2)
@@ -63,6 +63,9 @@ public class Servico implements Serializable {
 	
 	@Column(name= "lado2_fim", scale = 5, precision = 2)
 	private BigDecimal lado2Fim;
+	
+	@Column(nullable = false)
+	private Boolean hidden = Boolean.FALSE;
 
 	public Long getId() {
 		return id;

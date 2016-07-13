@@ -15,19 +15,15 @@ public class TipoServico implements Serializable {
 	private static final long serialVersionUID = -3141669185499677825L;
 
 	@Id
-	@SequenceGenerator(name = "tipo_servico_gen", sequenceName = "tipo_servico_seq")
+	@SequenceGenerator(name = "tipo_servico_gen", sequenceName = "tipo_servico_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tipo_servico_gen")
 	private Long id;
 	
 	@Column(nullable = false, length = 50)
 	private String descricao;
 
-	public TipoServico() {}
-	
-	public TipoServico(Long id, String descricao) {
-		this.id = id;
-		this.descricao = descricao;
-	}
+	@Column(nullable = false)
+	private Boolean hidden = Boolean.FALSE;
 	
 	public Long getId() {
 		return id;
@@ -43,6 +39,14 @@ public class TipoServico implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Boolean getHidden() {
+		return hidden;
+	}
+
+	public void setHidden(Boolean hidden) {
+		this.hidden = hidden;
 	}
 
 	@Override
