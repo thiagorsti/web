@@ -5,6 +5,22 @@ app.factory('Cliente', ['$resource', function($resource){
 				update: 
 				{
 					method: 'PUT'
+				},
+				search:
+				{
+					method: 'GET',
+					params: 
+					{
+						nome: '@nome',
+						tipoPessoa: '@tipoPessoa',
+						cpf: '@cpf',
+						rg: '@rg',
+						cnpj: '@cnpj',
+						ie: '@ie',
+						email: '@email',
+						telefone: '@telefone'
+					},
+					isArray: true
 				}
 			}
 	);

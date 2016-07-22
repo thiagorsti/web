@@ -1,7 +1,7 @@
 //var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors', 'ngResource']);
-var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngMessages', 'ngResource', 'ngSanitize', 'ngAnimate', 'bootstrap.angular.validation', 'ui.utils.masks']);
+var app = angular.module('agric', ['ui.router', 'ui.bootstrap', 'ngMessages', 'ngResource', 'ngSanitize', 'angular-loading-bar', 'ngAnimate', 'bootstrap.angular.validation', 'ui.utils.masks']);
 
-app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', function($uibTooltipProvider, $stateProvider, $urlRouterProvider) {
+app.config(['$uibTooltipProvider', '$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', function($uibTooltipProvider, $stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
 	
 	$uibTooltipProvider.options({
 		placement: 'top-left'

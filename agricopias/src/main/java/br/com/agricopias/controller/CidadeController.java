@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.agricopias.entity.Cidade;
-import br.com.agricopias.enums.repository.CidadeRepository;
+import br.com.agricopias.repository.CidadeRepository;
 
 @Controller
 @RequestMapping("/cidades")

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.agricopias.entity.Pessoa;
-import br.com.agricopias.enums.repository.ClienteRepository;
+import br.com.agricopias.repository.ClienteRepository;
 
 @Controller
 @RequestMapping("/clientes")

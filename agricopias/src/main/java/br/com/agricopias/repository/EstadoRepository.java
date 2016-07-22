@@ -1,4 +1,4 @@
-package br.com.agricopias.enums.repository;
+package br.com.agricopias.repository;
 
 import org.springframework.data.repository.Repository;
 

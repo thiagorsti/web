@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.agricopias.entity.Estado;
-import br.com.agricopias.enums.repository.EstadoRepository;
+import br.com.agricopias.repository.EstadoRepository;
 
 @Controller
 @RequestMapping("/estados")

@@ -3,8 +3,10 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	
 	self.criteria = '';
 	
+	self.clientes = [];
+	
 	var _loadData = function() {
-		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});				
+		self.tiposPessoa = EnumService.query({enum: 'tipoPessoa'});
 	};
 	
 	var _goToList = function() {
@@ -12,7 +14,21 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 	};
 	
 	self.list = function() {
-		self.clientes = Cliente.query();
+		self.filtros = {
+			tipoPessoa: null,
+			cpf: null,
+			rg: null,
+			cnpj: null,
+			ie: null,
+			nome: null,
+			email: null,
+			telefone: null
+		};		
+		_loadData();		
+	};
+	
+	self.search = function() {
+		self.clientes = Cliente.search(self.filtros);
 	};
 	
 	self.find = function() {
@@ -20,21 +36,21 @@ app.controller('ClienteController', ['$scope', '$state', '$stateParams', '$uibMo
 		Cliente.get({ id: $stateParams.id }).$promise.then(function(cliente) {
 		      self.cliente = cliente;
 		      self.showEnderecoForm(0);
-	    });		
+	    });
 	};
 	
 	self.remove = function(cliente) {
 		Cliente.remove(cliente, _goToList);
 	};
 	
-	self.save = function() {		
+	self.save = function() {
 		var form = self.form;
-		if (form.$invalid) {			
+		if (form.$invalid) {
 			console.log('Form inválido');
 			return;
-		}		
+		}
 		var cliente = self.cliente;
-		if (cliente.id) {			
+		if (cliente.id) {
 			Cliente.update(cliente, _goToList);			
 		}
 		else {

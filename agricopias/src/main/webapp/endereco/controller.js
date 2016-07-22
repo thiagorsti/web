@@ -4,8 +4,7 @@ app.controller('EnderecoController', ['$scope', '$http', '$uibModalInstance', 'E
 	self.endereco = angular.copy(endereco);
 	self.tiposEndereco = EnumService.query({enum: 'tipoEndereco'});
 	EstadoService.query().$promise.then(function(estados) {
-		self.estados = estados;
-		console.log(self.estados);
+		self.estados = estados;		
 		if (self.endereco.cidade) {
 			self.uf = self.endereco.cidade.estado; 
 		}		

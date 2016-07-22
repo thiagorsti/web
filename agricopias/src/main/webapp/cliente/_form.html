@@ -1,4 +1,4 @@
-<form name="ctrl.form" role="form" ng-submit="ctrl.save()">	
+<form name="ctrl.form" role="form" ng-submit="ctrl.save()">
 	<div class="row">
 		<div class="form-group col-md-6">
 			<label for="nome" class="control-label">Nome</label>
@@ -19,7 +19,7 @@
 			<label for="tipoPessoa" class="control-label">Tipo</label>
 			<select name="tipoPessoa"				
 				ng-model="ctrl.cliente.tipo"
-				ng-required="true"				
+				ng-required="true"
 				ng-options="tp as tp.descricao for tp in ctrl.tiposPessoa track by tp.value"				
 				class="form-control">
 			</select>
